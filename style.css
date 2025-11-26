@@ -1,130 +1,532 @@
 @font-face {
-    font-family: helvetica;
-    src: url(https://globalfonts.pro/font/helvetica-now-display);
+    font-family: monoSans;
+    src: url(./monosans.woff2);
 }
 
+@font-face {
+    font-family: font2;
+    src: url(./WFVisualSans-RegularText-46461986901f80620e484e70aa8cbb90ede25a01351d464819a4e47a3f38ea43.woff2);
+}
+
+@font-face {
+    font-family: font3;
+    src: url(./WFVisualSans-SemiBold-aa0e55353b6a1b897f76a0fcbf5561fa243ce1b8b9f6aebcb5a186f0536713b1.woff2);
+}
+
+@font-face {
+    font-family: hell;
+    src: url(https://www.cdnfonts.com/helvetica-neue-55.font);
+}
+
+@font-face {
+    font-family: helveticaNow;
+    src: url(./HelveticaNowDisplay-Bold.woff2);
+}
+
+@font-face {
+    font-family: inter;
+    src: url(./Inter-VariableFont_opsz\,wght.ttf);
+}
 *{
-    padding: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    font-family: helvetica;
 }
 
 html,body{
-    width: 100%;
     height: 100%;
-    font-family: helvetica;
+    width: 100%;
 }
 
 #main{
     height: 100%;
     width: 100%;
-    /* background-color: #000; */
-    padding: 30px;
 }
 
-#main .cards{
-    height: 300px;
-    width: 270px;
-    background-color: #fff;
-    border-radius: 25px;
-    padding: 15px 20px;
-    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.244);
-}
-
-.cards #logoimg{
-    height: 54px;
-    width: 54px;
-    border-radius: 50%;
-    border: 2px solid rgba(87, 87, 87, 0.196);
-    position: relative;
-}
-
-.cards img{
-    height: 38px;
-    width: 38px;
-    object-fit: cover;
-    border-radius: 50px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-}
-#content{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 6px;
-    margin-top: 15px;
-}
-
-#content #compdets{
+#main #nav{
+    width: 100%;
+    height: 95px;
     display: flex;
     align-items: center;
-    gap: 7px;
+    justify-content: space-between;
+    padding: 9px 50px;
+}
+
+#nav .navoptions{
+    width: 600px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.navoptions .navLogolink{
+    margin-right: 40px;
+}
+
+.navLogolink a{
+    color: black;
+    position: relative;
+    top: 14%;
+    text-decoration: none;
+    font-size: 25px;
+    font-family: monoSans;
+    font-weight: 400;
+}
+
+.navoptions .navlinks a{
+    text-decoration: none;
+    color: black;
+    font-family: monoSans;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+#nav .navbtns{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 17px;
+}
+
+.navbtns button{
+    background: white;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: monoSans;
+    font-weight: 600;
+}
+
+.navbtns #navbtn2{
+    background-color: #0D0C22;
+    color: white;
+    padding: 15px 20px;
+    border-radius: 50px;
+}
+
+#hero{
+    width: 100%;
+    height: 100%;
+    padding: 0px 70px;
+    position: relative;
+}
+
+#hero h1{
+    color: #0D0C22;
+    margin-top: 32px;
+    font-size: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 700;
+}
+
+#hero .herocontent p{
+    color: #0D0C22;
+    margin-top: 18px;
+    font-size: 16px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    line-height: 22px;
+}
+
+#hero .hero-media-main{
+    height: 425px;
+    width: 610px;
+    position: absolute;
+    right: 5%;
+    top: -4%;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.hero-media-main img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+
+#hero .herobtns{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-top: 40px;
+}
+
+.herobtns button{
+    border: none;
+    font-size: 15px;
+    font-family: monoSans;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: #fff;
+}
+
+.herobtns #herobtn1{
+    padding: 11px 19px;
+    background-color: #3A3546;
+    color: white;
+    border-radius: 50px;
+}
+
+.herobtns #herobtn1 a{
+    color: white;
+    text-decoration: none;
+    font-size: 13px;
+    font-family: monoSans;
+    font-weight: 600;
+}
+
+.herobtns a{
+    color: black;
+    text-decoration: none;
+    font-size: 13px;
+    font-family: monoSans;
+    font-weight: 600;
+}
+
+#hero .herosearchbox{
+    height: 62px;
+    width: 636px;
+    padding: 0px 20px;
+    background-color: #f3f3f6;
+    border: 3px solid #f3f3f6;
+    border-radius: 50px;
+    transition: background-color,border ease 0.2s;
+    margin-top: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+
+.herosearchbox form input{
+    border: none;
+    width: 300px;
+    background-color: transparent;
+    font-size: 14px;
+    font-family: monoSans;
+}
+
+.herosearchbox i{
+    padding: 11px;
+    border-radius: 50%;
+    background-color: #EC5E95;
+    color: white;
+    font-size: 18px;
+    position: absolute;
+    right: 1.3%;
     
 }
-#content h1{
+
+#hero .herosearchbox:hover{
+    border: 3px solid #f8e6f7;
+    background-color: transparent;
+}
+
+#hero .herosearchbar-options{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#hero .herosearchbar-options h4{
+    color: #3A3546;
+    font-size: 14px;
+    font-family: helveticaNow;
+    font-weight: 600;
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+#hero .herosearchbar-options a{
+    text-decoration: none;
+    color: black;
+    margin-top: 20px;
     font-size: 13px;
-    font-weight: 550;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 100;
+    padding: 8px 17px;
+    border: 1px solid #dbdbdb;
+    border-radius: 30px;
+    text-align: center;
+    transition: background-color ease 0.2s;
 }
 
-#content p{
-    font-size: 9px;
-    color: #969696;
-    position: relative;
-    top: 1.7px;
+#hero .herosearchbar-options a:hover{
+    background-color: #FAF9FB;
 }
 
-#content h2{
-    font-size: 17px;
-    font-weight: 600;
-}
-
-#content #btn button{
-    padding: 5px 8px;
-    font-size: 10px;
-    font-weight: 600;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    background-color: #a7a6a64d;
-}
-
-#foot{
-    position: relative;
-    top: 28%;
-}
-
-#foot #line{
+#hero .hero-project-brief-container{
     width: 100%;
-    height: 1px;
-    background-color: rgba(87, 87, 87, 0.196);
-    border-radius: 2px;
+    height: 68px;
+    background-color: #F8F8FC;
+    border-radius: 14px;
+    padding: 0px 15px;
+    display: flex;
+    align-items: center;
+    gap: 23px;
+    cursor: pointer;
+    margin-top: 50px;
 }
 
-#foot h4{
-    margin-top: 19px;
-    font-size: 15px;
+
+.hero-project-brief-container 
+.project-brief-container-btns a{
+    border: 1px solid #ECEBF0;
+    padding: 13px 20px;
+    border-radius: 40px;
+    background-color: #fff;
+    color: black;
+    text-decoration: none;
+    font-size: 13px;
+    font-family: helveticaNow;
+    transition: all ease 0.2s;
+}
+
+.project-brief-container-btns a i{
+    color: #956BCD;
+}
+
+.project-brief-container-btns:hover a{
+    border: 1px solid #bebcc6;
+}
+
+.project-brief-container-btns h5{
+    color: white;
+    background-color: #EA4C89;
+    width: 37px;
+    padding: 3px 1px;   
+    text-align: center;
+    border-radius: 20px;
+    font-size: 10px;
+    font-family: helveticaNow;
+    font-weight: 700;
+    position: absolute;
+}
+
+
+.hero-project-brief-container .project-brief-container-para{
+    color: #3A3546;
+    font-size: 14px;
+    font-family: monoSans;
+    font-weight: 400;
+}
+
+
+#hero .hero-nav{
+    width: 100%;
+    margin-top: 30px;
+    position: relative;
+    top: 2%;
+    /* background-color: rgb(52, 52, 52); */
+}
+
+.hero-nav .hero-navoptions{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.hero-navoptions .hero-nav-option1{
+    width: 110px;
+    height: 42px;
+    padding: 10px 15px;
+    border:1px solid #dbdbdb;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 14px;
+}
+.hero-navoptions .hero-nav-option2{
+    width: 95px;
+    height: 42px;
+    padding: 3px 18px;
+    border: 1px solid #dbdbdb;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 4px;
+}
+.hero-nav-option1 a{
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.hero-nav-option2 a{
+    color: black;
+    text-decoration: none;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.hero-navoptions .hero-navlinks{
+    width: 75%;
+    display: flex;
+    align-items: center;
+    /* justify-content:space-between; */
+    /* background-color: wheat; */
+    gap: 40px;
+
+}
+.hero-navoptions .hero-navlinks a{
+    color: black;
+    text-decoration: none;
+    font-size: 14px;
+    font-family: monoSans;
     font-weight: 600;
 }
 
-#foot p{
-    font-size: 9px;
-    color: #969696;
-    position: relative;
-    top: 3px;
+.hero-navlinks #link1{
+    padding: 9px 16px;
+    background-color: #F5F3F0;
+    border-radius: 30px;
 }
 
-#foot button{
-    position: absolute;
-    top: 51%;
-    left: 72%;
-    padding: 5px 9px;
-    font-size: 10px;
-    border: none;
-    border-radius: 4px;
-    background-color: rgb(31, 30, 30);
-    color: white;
+
+
+
+#hero .Card{
+    width: 310px;
+}
+#hero .Card .cardContent{
+    width: 100%;
+    height: 225px;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
     cursor: pointer;
+}
+
+.cardContent .heroCardsImg img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.cardContent .bottom{
+    width: 100%;
+    height: 40%;
+    padding: 0px 21px;
+    /* background-color: black; */
+    position: absolute;
+    bottom: -40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all ease 0.4s;
+}
+
+.bottom .cardtitle{
+    width: 150px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+}
+.bottom .cardtitle h3{
+    color: white;
+    font-size: 16px;
+    font-family: helveticaNow;
+    font-weight: 400;
+    cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.bottom .heroCards-icons{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+.bottom .heroCards-icons i{
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.cardContent:hover .bottom{
+    bottom: 0;
+    background: linear-gradient(transparent,rgba(0, 0, 0, 0.54));
+}
+
+
+#hero .Card .cardDets{
+    width: 100%;
+    /* background-color: #000; */
+    padding: 10px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+
+.cardDets .dets{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cardDets .authorimg{
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.authorimg img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.cardDets .authorName h5{
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+}
+
+.cardDets button{
+    border: none;
+    color: white;
+    padding: 2px 3px;
+    border-radius: 3px;
+    background-color: #CCCCCC;
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    text-align: center;
+}
+
+.cardDets .cardIcons i{
+    color: #CCCCCC;
+    margin-right: 5px;
+}
+.cardIcons .likes:hover{
+    color: #EA64D9;
+}
+
+.cardDets button:hover{
+    background-color: black;        
+}
+
+
+.heroCards{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 48px;
 }

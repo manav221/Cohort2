@@ -4,35 +4,529 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="main">
-        <div class="cards">
-            <div id="logoimg">
-                <img src="https://imgs.search.brave.com/ssZqU8sM6yyQ6R6yTh3lBckm5jodvpLfYRCZ8kDeLLM/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2E3Lzhj/LzQwL2E3OGM0MDZl/NGFkOTVmNjhiZDhi/MDE0NTgyZWYzZWNl/LmpwZw" alt="">
+        <div id="nav">
+            
+            <div class="navoptions">
+                <div class="navLogolink">
+                    <a href="#">Dribble</a>
+                </div>
+                <div class="navlinks">
+                    <a href="#">Explore</a>
+                    <i class="ri-arrow-down-s-line"></i>
+                </div>
+
+                <div class="navlinks">
+                    <a href="#">Find Talent</a>
+                    <i class="ri-arrow-down-s-line"></i>
+                </div>
+
+                <div class="navlinks">
+                    <a href="#">Get Hired</a>
+                    <i class="ri-arrow-down-s-line"></i>
+                </div>
+
+                <div class="navlinks">
+                    <a href="#">Blog</a>
+                </div>
             </div>
 
-            <div id="content">
-                <div id="compdets">
-                    <h1>Apple</h1>
-                    <p>5 days ago</p>
+            <div class="navbtns">
+                <button id="navbtn1">Sign up</button>
+                <button id="navbtn2">Log in</button>
+            </div>
+        </div>
+
+        <div id="hero">
+            <div class="herocontent">
+                <h1>Discover the <br>World’s Top Designers</h1>
+                <p>Explore work from the most talented and accomplished <br>designers ready to take on your next project.</p>
+            </div>
+
+            <div class="hero-media-main">
+                <img src="https://images.unsplash.com/photo-1763431921801-8dfc1bac8793?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw2N3x8fGVufDB8fHx8fA%3D%3D" alt="">
+            </div>
+
+            <div class="herobtns">
+                <div id="herobtn1">
+                    <i class="ri-image-line"></i>
+                    <a href="#">Shots</a>
                 </div>
-                <h2>Graphic Designer</h2>
-                <div id="btn">
-                    <button>Full-Time</button>
-                    <button>Flexible Schedule</button>
+                <div id="herobtn2">
+                    <i class="ri-group-line"></i>
+                    <a href="#">Designers</a>
+                </div>
+                <div id="herobtn3">
+                    <i class="ri-file-list-3-line"></i>
+                    <a href="#">Services</a>
                 </div>
             </div>
 
-            <div id="foot">
-                <div id="line"></div>
-                <h4>$85-120k</h4>
-                <p>Mumbai,India</p>
-                <button>Apply now</button>
+            <div class="herosearchbox">
+                <form>
+                    <input type="text" placeholder="What type of design are you interested in?">
+                </form>
+                <i class="ri-search-line"></i>
+                
+
+            </div>
+
+            <div class="herosearchbar-options">
+                <h4>Popular: </h4>
+                <a href="#">dashboard</a>
+                <a href="#">landing page</a>
+                <a href="#">e-commerce</a>
+                <a href="#">logo</a>
+                <a href="#">card</a>
+                <a href="#">icons</a>
+            </div>
+
+            <div class="hero-project-brief-container">  
+                <div class="project-brief-container-btns">
+                    <a href="#"><i class="ri-bubble-chart-line"></i> Hiring for a project?</a>
+                    <h5>NEW</h5>
+                </div>
+                <div class="project-brief-container-para">
+                    <p>Generate a brief with AI,instantly connect with recommended top talent,and recieve proposals within minutes <i class="ri-arrow-right-long-line"></i></p>
+                </div>
+            </div>
+
+
+            <div class="hero-nav">
+                <div class="hero-navoptions">
+                    <div class="hero-nav-option1">
+                        <a href="#">Popular</a>
+                        <i class="ri-arrow-down-s-line"></i>
+                    </div>
+
+                    <div class="hero-navlinks">
+                        <a href="#" id="link1">Discover</a>
+                        <a href="#">Animation</a>
+                        <a href="#">Branding</a>
+                        <a href="#">Illustration</a>
+                        <a href="#">Mobile</a>
+                        <a href="#">Print</a>
+                        <a href="#">Product Design</a>
+                        <a href="#">Typography</a>
+                        <a href="#">Web Design</a>
+                    </div>
+
+                    <div class="hero-nav-option2">
+                        <i class="ri-filter-3-line"></i>
+                        <a href="#">Filters</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="heroCards">
+                <div class="Card">
+                    <div class="cardContent">
+                        <div class="heroCardsImg">
+                            <img src="https://cdn.dribbble.com/userupload/45827430/file/395d51b139e66ae42d737f0ee5ae5b1b.png?crop=0x0-3201x2401&format=webp&resize=1200x900&vertical=center" alt="">
+                        </div>
+                        <div class="bottom">
+                            <div class="cardtitle">
+                                <h3>Brim website</h3>
+                            </div>
+                            <div class="heroCards-icons">
+                                <i class="ri-bookmark-line"></i>
+                                <i class="ri-heart-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cardDets">
+                        <div class="dets">
+                            <div class="authorimg">
+                                <img src="https://cdn.dribbble.com/users/3537662/avatars/small/fa89ee31a92bff70db88c84bafc9b7ef.png?1688500299" alt="">
+                            </div>
+                            <div class="authorName">
+                                <h5>BL/S</h5>
+                            </div>
+                                <button>PRO</button>
+                        </div>
+    
+                        <div class="cardIcons">
+                            <i class="ri-heart-fill likes"></i>
+                            <i class="ri-eye-fill"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="Card">
+                    <div class="cardContent">
+                        <div class="heroCardsImg">
+                            <img src="https://cdn.dribbble.com/userupload/45814650/file/fd4c31e50b5ddc5f50565cc3826ecaeb.png?format=webp&resize=640x480&vertical=center" alt="">
+                        </div>
+                        <div class="bottom">
+                            <div class="cardtitle">
+                                <h3>Mobile App Design</h3>
+                            </div>
+                            <div class="heroCards-icons">
+                                <i class="ri-bookmark-line"></i>
+                                <i class="ri-heart-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cardDets">
+                        <div class="dets">
+                            <div class="authorimg">
+                                <img src="https://cdn.dribbble.com/users/1057940/avatars/small/f068710cc8e5fcebcbcd8f1f75d1b4ef.gif?1732126488" alt="">
+                            </div>
+                            <div class="authorName">
+                                <h5>Nixito</h5>
+                            </div>
+                                <button>TEAM</button>
+                        </div>
+    
+                        <div class="cardIcons">
+                            <i class="ri-heart-fill likes"></i>
+                            <i class="ri-eye-fill"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="Card">
+                    <div class="cardContent">
+                        <div class="heroCardsImg">
+                            <img src="https://cdn.dribbble.com/userupload/45827702/file/dc9f0966fd086e1fcd582ccbf16093f2.png?format=webp&resize=1200x900&vertical=center" alt="">
+                        </div>
+                        <div class="bottom">
+                            <div class="cardtitle">
+                                <h3>Approved Logo Design</h3>
+                            </div>
+                            <div class="heroCards-icons">
+                                <i class="ri-bookmark-line"></i>
+                                <i class="ri-heart-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cardDets">
+                        <div class="dets">
+                            <div class="authorimg">
+                                <img src="https://cdn.dribbble.com/users/393931/avatars/small/38775509fbfc5da2f37aee467ef06411.png?1713428282" alt="">
+                            </div>
+                            <div class="authorName">
+                                <h5>Mihai Dolganiuc</h5>
+                            </div>
+                                <button>PRO</button>
+                        </div>
+    
+                        <div class="cardIcons">
+                            <i class="ri-heart-fill likes"></i>
+                            <i class="ri-eye-fill"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="Card">
+                    <div class="cardContent">
+                        <div class="heroCardsImg">
+                            <img src="https://cdn.dribbble.com/userupload/45829295/file/1789e4599d4db1c5019f63f56ec10675.jpg?format=webp&resize=640x480&vertical=center" alt="">
+                        </div>
+                        <div class="bottom">
+                            <div class="cardtitle">
+                                <h3>ZERO Monospace Wsdasd</h3>
+                            </div>
+                            <div class="heroCards-icons">
+                                <i class="ri-bookmark-line"></i>
+                                <i class="ri-heart-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cardDets">
+                        <div class="dets">
+                            <div class="authorimg">
+                                <img src="https://cdn.dribbble.com/users/22136/avatars/small/9ab8f67def79c1b8c442ee1874999148.jpg?1411082459" alt="">
+                            </div>
+                            <div class="authorName">
+                                <h5>Type08(Alen Pavlovic)</h5>
+                            </div>
+                                <button>PRO</button>
+                        </div>
+    
+                        <div class="cardIcons">
+                            <i class="ri-heart-fill likes"></i>
+                            <i class="ri-eye-fill"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="Card">
+                    <div class="cardContent">
+                        <div class="heroCardsImg">
+                            <img src="https://cdn.dribbble.com/userupload/45827430/file/395d51b139e66ae42d737f0ee5ae5b1b.png?crop=0x0-3201x2401&format=webp&resize=1200x900&vertical=center" alt="">
+                        </div>
+                        <div class="bottom">
+                            <div class="cardtitle">
+                                <h3>Brim website</h3>
+                            </div>
+                            <div class="heroCards-icons">
+                                <i class="ri-bookmark-line"></i>
+                                <i class="ri-heart-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cardDets">
+                        <div class="dets">
+                            <div class="authorimg">
+                                <img src="https://cdn.dribbble.com/users/3537662/avatars/small/fa89ee31a92bff70db88c84bafc9b7ef.png?1688500299" alt="">
+                            </div>
+                            <div class="authorName">
+                                <h5>BL/S</h5>
+                            </div>
+                                <button>PRO</button>
+                        </div>
+    
+                        <div class="cardIcons">
+                            <i class="ri-heart-fill likes"></i>
+                            <i class="ri-eye-fill"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="Card">
+                    <div class="cardContent">
+                        <div class="heroCardsImg">
+                            <img src="https://cdn.dribbble.com/userupload/45814650/file/fd4c31e50b5ddc5f50565cc3826ecaeb.png?format=webp&resize=640x480&vertical=center" alt="">
+                        </div>
+                        <div class="bottom">
+                            <div class="cardtitle">
+                                <h3>Mobile App Design</h3>
+                            </div>
+                            <div class="heroCards-icons">
+                                <i class="ri-bookmark-line"></i>
+                                <i class="ri-heart-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cardDets">
+                        <div class="dets">
+                            <div class="authorimg">
+                                <img src="https://cdn.dribbble.com/users/1057940/avatars/small/f068710cc8e5fcebcbcd8f1f75d1b4ef.gif?1732126488" alt="">
+                            </div>
+                            <div class="authorName">
+                                <h5>Nixito</h5>
+                            </div>
+                                <button>TEAM</button>
+                        </div>
+    
+                        <div class="cardIcons">
+                            <i class="ri-heart-fill likes"></i>
+                            <i class="ri-eye-fill"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="Card">
+                    <div class="cardContent">
+                        <div class="heroCardsImg">
+                            <img src="https://cdn.dribbble.com/userupload/45827702/file/dc9f0966fd086e1fcd582ccbf16093f2.png?format=webp&resize=1200x900&vertical=center" alt="">
+                        </div>
+                        <div class="bottom">
+                            <div class="cardtitle">
+                                <h3>Approved Logo Design</h3>
+                            </div>
+                            <div class="heroCards-icons">
+                                <i class="ri-bookmark-line"></i>
+                                <i class="ri-heart-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cardDets">
+                        <div class="dets">
+                            <div class="authorimg">
+                                <img src="https://cdn.dribbble.com/users/393931/avatars/small/38775509fbfc5da2f37aee467ef06411.png?1713428282" alt="">
+                            </div>
+                            <div class="authorName">
+                                <h5>Mihai Dolganiuc</h5>
+                            </div>
+                                <button>PRO</button>
+                        </div>
+    
+                        <div class="cardIcons">
+                            <i class="ri-heart-fill likes"></i>
+                            <i class="ri-eye-fill"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="Card">
+                    <div class="cardContent">
+                        <div class="heroCardsImg">
+                            <img src="https://cdn.dribbble.com/userupload/45829295/file/1789e4599d4db1c5019f63f56ec10675.jpg?format=webp&resize=640x480&vertical=center" alt="">
+                        </div>
+                        <div class="bottom">
+                            <div class="cardtitle">
+                                <h3>ZERO Monospace Wsdasd</h3>
+                            </div>
+                            <div class="heroCards-icons">
+                                <i class="ri-bookmark-line"></i>
+                                <i class="ri-heart-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cardDets">
+                        <div class="dets">
+                            <div class="authorimg">
+                                <img src="https://cdn.dribbble.com/users/22136/avatars/small/9ab8f67def79c1b8c442ee1874999148.jpg?1411082459" alt="">
+                            </div>
+                            <div class="authorName">
+                                <h5>Type08(Alen Pavlovic)</h5>
+                            </div>
+                                <button>PRO</button>
+                        </div>
+    
+                        <div class="cardIcons">
+                            <i class="ri-heart-fill likes"></i>
+                            <i class="ri-eye-fill"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="Card">
+                    <div class="cardContent">
+                        <div class="heroCardsImg">
+                            <img src="https://cdn.dribbble.com/userupload/45827430/file/395d51b139e66ae42d737f0ee5ae5b1b.png?crop=0x0-3201x2401&format=webp&resize=1200x900&vertical=center" alt="">
+                        </div>
+                        <div class="bottom">
+                            <div class="cardtitle">
+                                <h3>Brim website</h3>
+                            </div>
+                            <div class="heroCards-icons">
+                                <i class="ri-bookmark-line"></i>
+                                <i class="ri-heart-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cardDets">
+                        <div class="dets">
+                            <div class="authorimg">
+                                <img src="https://cdn.dribbble.com/users/3537662/avatars/small/fa89ee31a92bff70db88c84bafc9b7ef.png?1688500299" alt="">
+                            </div>
+                            <div class="authorName">
+                                <h5>BL/S</h5>
+                            </div>
+                                <button>PRO</button>
+                        </div>
+    
+                        <div class="cardIcons">
+                            <i class="ri-heart-fill likes"></i>
+                            <i class="ri-eye-fill"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="Card">
+                    <div class="cardContent">
+                        <div class="heroCardsImg">
+                            <img src="https://cdn.dribbble.com/userupload/45814650/file/fd4c31e50b5ddc5f50565cc3826ecaeb.png?format=webp&resize=640x480&vertical=center" alt="">
+                        </div>
+                        <div class="bottom">
+                            <div class="cardtitle">
+                                <h3>Mobile App Design</h3>
+                            </div>
+                            <div class="heroCards-icons">
+                                <i class="ri-bookmark-line"></i>
+                                <i class="ri-heart-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cardDets">
+                        <div class="dets">
+                            <div class="authorimg">
+                                <img src="https://cdn.dribbble.com/users/1057940/avatars/small/f068710cc8e5fcebcbcd8f1f75d1b4ef.gif?1732126488" alt="">
+                            </div>
+                            <div class="authorName">
+                                <h5>Nixito</h5>
+                            </div>
+                                <button>TEAM</button>
+                        </div>
+    
+                        <div class="cardIcons">
+                            <i class="ri-heart-fill likes"></i>
+                            <i class="ri-eye-fill"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="Card">
+                    <div class="cardContent">
+                        <div class="heroCardsImg">
+                            <img src="https://cdn.dribbble.com/userupload/45827702/file/dc9f0966fd086e1fcd582ccbf16093f2.png?format=webp&resize=1200x900&vertical=center" alt="">
+                        </div>
+                        <div class="bottom">
+                            <div class="cardtitle">
+                                <h3>Approved Logo Design</h3>
+                            </div>
+                            <div class="heroCards-icons">
+                                <i class="ri-bookmark-line"></i>
+                                <i class="ri-heart-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cardDets">
+                        <div class="dets">
+                            <div class="authorimg">
+                                <img src="https://cdn.dribbble.com/users/393931/avatars/small/38775509fbfc5da2f37aee467ef06411.png?1713428282" alt="">
+                            </div>
+                            <div class="authorName">
+                                <h5>Mihai Dolganiuc</h5>
+                            </div>
+                                <button>PRO</button>
+                        </div>
+    
+                        <div class="cardIcons">
+                            <i class="ri-heart-fill likes"></i>
+                            <i class="ri-eye-fill"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="Card">
+                    <div class="cardContent">
+                        <div class="heroCardsImg">
+                            <img src="https://cdn.dribbble.com/userupload/45829295/file/1789e4599d4db1c5019f63f56ec10675.jpg?format=webp&resize=640x480&vertical=center" alt="">
+                        </div>
+                        <div class="bottom">
+                            <div class="cardtitle">
+                                <h3>ZERO Monospace Wsdasd</h3>
+                            </div>
+                            <div class="heroCards-icons">
+                                <i class="ri-bookmark-line"></i>
+                                <i class="ri-heart-line"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cardDets">
+                        <div class="dets">
+                            <div class="authorimg">
+                                <img src="https://cdn.dribbble.com/users/22136/avatars/small/9ab8f67def79c1b8c442ee1874999148.jpg?1411082459" alt="">
+                            </div>
+                            <div class="authorName">
+                                <h5>Type08(Alen Pavlovic)</h5>
+                            </div>
+                                <button>PRO</button>
+                        </div>
+    
+                        <div class="cardIcons">
+                            <i class="ri-heart-fill likes"></i>
+                            <i class="ri-eye-fill"></i>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
     </div>
+
 </body>
 </html>
