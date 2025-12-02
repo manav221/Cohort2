@@ -7,32 +7,48 @@
     font-family: neue machina;
     src: url(./NeueMachina-Regular_DQCmjH1st.ttf);
 }
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html,body{
+html,
+body {
     height: 100%;
     width: 100%;
 }
 
-main{
+main {
     height: 100vh;
     width: 100vw;
     display: grid;
-    grid-template-columns: 40vw 55vw;
-    grid-template-rows: 10% 45% 37%;
-
-    grid-template-areas: "nav nav nav"
-                         "section figure figure "
-                         "footer figure figure";
-    gap: 15px;
+    grid-template-columns: 40vw 60vw;
+    grid-template-rows: 12% 45% 37%;
+    grid-template-areas: "nav nav"
+                         "section figure"
+                         "footer figure";
 }
 
-main nav{
-    width: 84vw;
+main section {
+    grid-area: section;
+}
+
+main figure .fst-img {
+    grid-area: figure;
+}
+
+main section .sec-img-group {
+    grid-area: figure;
+}
+
+main footer {
+    grid-area: footer;
+}
+
+main nav {
+    width: 85.7vw;
     height: 12vh;
     display: flex;
     align-items: center;
@@ -40,45 +56,34 @@ main nav{
     grid-area: nav;
     margin-left: 100px;
 }
-main section{
-    grid-area: section;
-    margin-top: 20px;
-}
-main figure .fst-img{
-    grid-area: figure;
-}
-main section .sec-img-group{
-    grid-area: figure;
-}
 
-main footer{
-    grid-area: footer;
-}
-nav .logo-img-txt{
+nav .logo-img-txt {
     height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.logo-img-txt img{
+.logo-img-txt img {
     height: 25px;
     width: 25px;
     object-fit: cover;
     border-radius: 50px;
 }
 
-.logo-img-txt h2{
+.logo-img-txt h2 {
     font-size: 1.4rem;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 600;
 }
-nav .navlinks{
+
+nav .navlinks {
     display: flex;
     align-items: center;
     gap: 2rem;
 }
-nav .navlinks a{
+
+nav .navlinks a {
     color: black;
     text-decoration: none;
     font-size: 0.8rem;
@@ -86,14 +91,14 @@ nav .navlinks a{
     font-weight: 600;
 }
 
-nav .nav-oth-links{
+nav .nav-oth-links {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
 }
 
-.nav-oth-links>a{
+.nav-oth-links>a {
     color: black;
     text-decoration: none;
     font-size: 0.8rem;
@@ -101,7 +106,7 @@ nav .nav-oth-links{
     font-weight: 600;
 }
 
-.nav-oth-links .navbtn{
+.nav-oth-links .navbtn {
     background-color: #282d3a;
     height: 2.4rem;
     width: 7.2rem;
@@ -114,48 +119,50 @@ nav .nav-oth-links{
 
 }
 
-.navbtn a{
+.navbtn a {
     color: white;
     text-decoration: none;
     font-size: 0.7rem;
     font-family: helvetica;
 }
 
-.navbtn i{
+.navbtn i {
     background-color: #BAC3FE;
     padding: 7px;
     border-radius: 50px;
 
 }
 
-section{
+section {
     padding-left: 100px;
 }
-section .txt-1{
+
+section .txt-1 {
     display: flex;
     align-items: baseline;
     gap: 15px;
 }
-section .txt-1 span{
+
+section .txt-1 span {
     height: 2.7rem;
     width: 7rem;
     overflow: hidden;
     border-radius: 2rem;
 }
 
-span img{
+span img {
     height: 100%;
     width: 100%;
     object-fit: cover;
 }
 
-section .txt-3{
+section .txt-3 {
     display: flex;
     align-items: center;
     gap: 38px;
 }
 
-section .txt-3 #inline-btn{
+section .txt-3 #inline-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -165,25 +172,27 @@ section .txt-3 #inline-btn{
     gap: 0.6rem;
     padding: 0px 0.6rem;
     border: 1px solid black;
-    
+
 }
-section .txt-3 #inline-btn i{
+
+section .txt-3 #inline-btn i {
     font-size: 1.3rem;
     font-weight: 200;
 }
-section .txt-3 #inline-btn h5{
+
+section .txt-3 #inline-btn h5 {
     font-size: 0.7rem;
     font-family: helvetica;
     font-weight: 600;
 }
 
-section .font{
+section .font {
     font-size: 4rem;
     font-family: neue machina;
     font-weight: 500;
 }
 
-figure{
+figure {
     height: 85vh;
     display: flex;
     flex-direction: column;
@@ -192,26 +201,26 @@ figure{
     gap: 20px;
 }
 
-figure .fst-img img{
+figure .fst-img img {
     width: 45vw;
     height: 42vh;
     object-fit: cover;
     border-radius: 2rem;
 }
 
-figure .sec-img-group{
+figure .sec-img-group {
     display: flex;
     gap: 20px;
 }
 
-figure .sec-img-group img{
+figure .sec-img-group img {
     width: 21.5vw;
     height: 40vh;
     object-fit: cover;
     border-radius: 2rem;
 }
 
-footer{
+footer {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -219,14 +228,14 @@ footer{
     padding-top: 25px;
 }
 
-footer .foot-btns{
+footer .foot-btns {
     display: flex;
     align-items: center;
     /* justify-content: ; */
     gap: 1.2rem;
 }
 
-.foot-btns a{
+.foot-btns a {
     color: black;
     text-decoration: none;
     font-family: Arial, Helvetica, sans-serif;
@@ -234,7 +243,7 @@ footer .foot-btns{
     font-weight: 500;
 }
 
-.foot-btns #foot-first-btn{
+.foot-btns #foot-first-btn {
     color: white;
     background-color: #282d3a;
     height: 2.4rem;
@@ -246,30 +255,30 @@ footer .foot-btns{
     gap: 10px;
 }
 
-#foot-first-btn a{
+#foot-first-btn a {
     color: white;
 }
 
-.foot-btns #foot-btns-sec{
+.foot-btns #foot-btns-sec {
     font-family: helvetica;
     font-weight: 600;
     text-decoration: underline;
 }
 
-footer .foot-bottom{
+footer .foot-bottom {
     display: flex;
     flex-direction: column;
     gap: 30px;
 }
 
-footer .foot-bottom p{
+footer .foot-bottom p {
     width: 350px;
     font-size: 0.7rem;
     font-family: helvetica;
     font-weight: 600;
 }
 
-footer .foot-logo{
+footer .foot-logo {
     display: flex;
     align-items: center;
     gap: 50px;
