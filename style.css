@@ -22,9 +22,21 @@ main section {
   align-items: center;
   justify-content: center;
   transition: all 0.7s cubic-bezier(0.075, 0.82, 0.165, 1);
+  cursor: pointer;
+}
+main section h1 {
+  font-size: 1.2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(250, 238, 226);
+  transition: all 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
 }
 main section:hover {
   flex-grow: 3;
+}
+main section:hover h1:hover {
+  color: transparent;
+  font-size: 3rem;
+  -webkit-text-stroke: 2px rgb(251, 240, 230);
 }
 
 .section-1 {
