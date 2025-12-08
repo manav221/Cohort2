@@ -1,7 +1,3 @@
-@font-face {
-  font-family: sf pro;
-  src: url(./sf-pro-display_regular.woff2);
-}
 * {
   margin: 0;
   padding: 0;
@@ -14,346 +10,600 @@ body {
   width: 100%;
 }
 
-main {
-  height: 100vh;
-  width: 100vw;
-  display: grid;
-  grid-template-columns: 40% 1fr;
-  grid-template-rows: 8vh 0.5fr 1fr;
-  grid-template-areas: "nav-left section-left" "section-right section-left" "section-lR section-left";
+html {
+  color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
-nav {
-  grid-area: nav-left;
-  height: 100%;
+body {
+  background-color: #121212;
+}
+
+section, footer {
+  max-width: 1600px;
+}
+
+main {
   width: 100%;
   display: flex;
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding-left: 50px;
+  flex-direction: column;
+  gap: 0rem;
+  align-items: center;
 }
-nav .navcontent {
-  background-color: rgb(233, 230, 230);
-  width: 75%;
-  height: 70%;
-  border-radius: 20px;
+main section.view-1 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.1rem;
+}
+main section.view-1 .top {
+  width: 100%;
+}
+main section.view-1 .top img {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+main section.view-1 .bottom {
+  background-color: rgb(33, 33, 33);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+main section.view-1 .bottom h3 {
+  font-weight: 600;
+  font-size: 1rem;
+}
+main section.view-1 .bottom .text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+main section.view-1 .bottom .text h1 {
+  font-weight: 400;
+  font-size: 2.3rem;
+}
+main section.view-1 .bottom .text p {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: rgb(157, 157, 157);
+}
+main section.view-1 .bottom .text .btn {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+main section.view-1 .bottom .text .btn i {
+  padding: 0.8rem;
+  border-radius: 4.2rem;
+  background-color: rgba(167, 167, 167, 0.179);
+  border: 1px solid rgba(255, 255, 255, 0.525);
+}
+main section.view-1 .bottom .text .btn p {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: white;
+}
+main section.view-2 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 1.1rem;
+}
+main section.view-2 .top,
+main section.view-2 .bottom {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  position: relative;
-  z-index: 1;
 }
-nav .navcontent .selected {
-  position: absolute;
-  left: 0;
-  height: 100%;
-  width: 25%;
-  background-color: black;
-  border-radius: 20px;
-  z-index: 2;
-}
-nav .navcontent a {
-  color: black;
-  text-decoration: none;
-  font-family: Arial, Helvetica, sans-serif;
-  z-index: 3;
-  font-size: 0.8rem;
-}
-
-.navcontent a:nth-child(1) {
-  color: white;
-}
-
-#section-1 {
-  grid-area: section-right;
-  padding-left: 50px;
-  padding-top: 30px;
-}
-#section-1 h1 {
-  font-size: 3.5rem;
-  font-family: sf pro;
-  font-weight: 600;
-  letter-spacing: 3px;
-}
-#section-1 .text-1 {
-  width: 75%;
-  display: flex;
-  color: black;
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-#section-1 .text-1 .text-1-img {
-  width: 30%;
-  height: 100%;
-  position: absolute;
-  top: 20%;
-  right: 10%;
-}
-#section-1 .text-1 .text-1-img img {
-  height: 45px;
-  width: 45px;
-  border-radius: 50%;
-  position: absolute;
-  border: 2px solid white;
-}
-#section-1 .text-1 .text-1-img img:nth-child(2) {
-  left: 20%;
-}
-#section-1 .text-1 .text-1-img img:nth-child(3) {
-  left: 42%;
-}
-#section-1 .oth-text {
-  width: 75%;
-}
-#section-1 #dashed {
-  width: 75%;
-  height: 15%;
-  margin-top: 25px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-#section-1 #dashed .left {
-  width: 37.5%;
-  height: 5px;
-  border-bottom: 2px dashed black;
-}
-#section-1 #dashed .center {
-  width: 70px;
-  height: 35px;
-  border-radius: 20px;
-  border: 2px dashed black;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#section-1 #dashed .right {
-  width: 37.5%;
-  height: 5px;
-  border-bottom: 2px dashed black;
-}
-
-#section-2 {
-  grid-area: section-left;
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-}
-#section-2 .section-2-img {
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  padding: 6px 6px 6px 0px;
-}
-#section-2 .section-2-img img {
-  height: 100%;
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
-  border-radius: 20px;
-}
-#section-2 .section-2-img .nav-right-side {
-  width: 99.4%;
-  height: 30vh;
-  border-radius: 20px;
-  position: absolute;
-  top: 0.9%;
-  z-index: 99;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-}
-#section-2 .section-2-img .nav-right-side .nav-rigth-side-left {
-  padding: 90px 10px;
-  display: flex;
-  transform: rotate(-90deg);
-}
-#section-2 .section-2-img .nav-right-side .nav-rigth-side-left .capsule {
-  padding: 10px 15px;
-  background-color: #fff;
-  border-radius: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#section-2 .section-2-img .nav-right-side .nav-rigth-side-left .capsule h4 {
-  font-size: 0.9rem;
-  font-family: sf pro;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
-#section-2 .section-2-img .nav-right-side .nav-rigth-side-left i {
-  padding: 12px;
-  border-radius: 999px;
-  background-color: #000;
-  color: white;
-}
-#section-2 .section-2-img .nav-right-side .nav-right-side-right {
-  width: 200px;
-  height: 70px;
-  background-color: white;
-  border-bottom-left-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#section-2 .section-2-img .nav-right-side .nav-right-side-right i {
-  padding: 10px;
-  border-radius: 999px;
-  background-color: #000;
-  color: white;
-}
-#section-2 .section-2-img .nav-right-side .nav-right-side-right a {
-  height: 2rem;
-  width: 8rem;
-  padding: 18px 0px;
-  color: #000;
-  background-color: white;
-  text-decoration: none;
-  box-shadow: 0px 0px 80px 1px rgb(201, 201, 201);
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.9rem;
-  font-family: sf pro;
-  font-weight: 600;
-}
-#section-2 .section-2-img .bottom-capsules {
-  width: 250px;
-  height: 130px;
-  position: absolute;
-  z-index: 99;
-  bottom: 4%;
-  right: 4%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: center;
-}
-#section-2 .section-2-img .bottom-capsules a {
-  color: white;
-  text-decoration: none;
-  font-size: 0.8rem;
-  font-family: sf pro;
-}
-#section-2 .section-2-img .bottom-capsules .pair-1 {
-  display: flex;
-}
-#section-2 .section-2-img .bottom-capsules .pair-1 .goli {
-  padding: 12px 30px;
-  border-radius: 999px;
-}
-#section-2 .section-2-img .bottom-capsules .pair-2 {
-  display: flex;
-}
-#section-2 .section-2-img .bottom-capsules .pair-2 .goli {
-  padding: 12px 40px;
-  border-radius: 999px;
-}
-#section-2 .section-2-img .bottom-capsules .goli {
+main section.view-2 .top .element,
+main section.view-2 .bottom .element {
   text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  background-color: rgba(255, 255, 255, 0.12);
-  -webkit-backdrop-filter: blur(12px);
-          backdrop-filter: blur(12px);
-  color: #fff;
-}
-
-#section-lR {
-  grid-area: section-lR;
-  width: 53vw;
-  height: 20vh;
-  padding-left: 50px;
-  padding-top: 40px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  z-index: 99;
-}
-#section-lR .left-content {
-  padding-top: 30px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 0.3rem;
 }
-#section-lR .left-content .green-box {
-  width: 10px;
-  height: 10px;
-  background-color: greenyellow;
-}
-#section-lR .left-content p {
-  width: 155px;
-  line-height: 20px;
-  font-size: 0.9rem;
-  font-family: sf pro;
+main section.view-2 .top .element small,
+main section.view-2 .bottom .element small {
+  color: #999895;
+  font-size: 1rem;
   font-weight: 600;
 }
-#section-lR .right-content {
-  height: 30vh;
-  background-color: #fff;
-  padding: 15px 10px 0px 0px;
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
+main section.view-2 .top .element h2,
+main section.view-2 .bottom .element h2 {
+  font-size: 2.5rem;
+  font-weight: 400;
 }
-#section-lR .right-content .models {
-  display: flex;
-  gap: 10px;
-  cursor: pointer;
-}
-#section-lR .right-content .models .right-content-img {
-  height: 150px;
-  width: 155px;
-  overflow: hidden;
-  border-radius: 25px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-#section-lR .right-content .models .right-content-img img {
-  height: 100%;
+main section.view-3 {
   width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.1rem;
 }
-#section-lR .right-content .models .right-content-img a {
-  height: 2rem;
-  width: 90%;
+main section.view-3 .top {
+  width: 100%;
+}
+main section.view-3 .top img {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+main section.view-3 .bottom {
+  background-color: rgb(33, 33, 33);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+main section.view-3 .bottom h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+main section.view-3 .bottom .text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+main section.view-3 .bottom .text h1 {
+  font-size: 2.3rem;
+  font-weight: 400;
+}
+main section.view-3 .bottom .text .paragraphs p {
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: rgb(157, 157, 157);
+}
+main section.view-4 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.1rem;
+}
+main section.view-4 .top {
+  width: 100%;
+}
+main section.view-4 .top img {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+main section.view-4 .bottom {
+  background-color: rgb(33, 33, 33);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+main section.view-4 .bottom h3 {
+  font-weight: 600;
+  font-size: 1rem;
+}
+main section.view-4 .bottom .text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+main section.view-4 .bottom .text h1 {
+  font-size: 2.3rem;
+  font-weight: 400;
+}
+main section.view-4 .bottom .text .paragraphs p {
+  font-weight: 400;
+  font-size: 1.4rem;
+  color: rgb(157, 157, 157);
+}
+main section.sec-half {
+  width: 100%;
+  padding: 1.1rem;
+}
+main section.sec-half h2 {
+  font-size: 2rem;
+  font-weight: 400;
+  padding-left: 1rem;
+}
+main section.sec-half .btn {
+  display: none;
+}
+main section.view-5 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.1rem;
+}
+main section.view-5 .card {
+  width: 100%;
+  height: 47vh;
+  background-image: url("https://assets-global.website-files.com/63cffb7c16ab3347fc9734c8/63d2ccbd7d003dfb6a1bdecb_team-01.webp");
+  background-size: cover;
+  background-position: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+main section.view-5 .card .card-element {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  justify-content: space-between;
+}
+main section.view-5 .card .card-element .icons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.7rem;
+  padding-top: 1.2rem;
+}
+main section.view-5 .card .card-element .icons i {
+  padding: 0.8rem;
+  border-radius: 4.2rem;
+  background-color: rgba(167, 167, 167, 0.179);
+  border: 1px solid rgba(255, 255, 255, 0.525);
+}
+main section.view-5 .card .card-element .title {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.12);
+  -webkit-backdrop-filter: blur(0.8rem);
+          backdrop-filter: blur(0.8rem);
+  border-radius: 0.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1rem;
+}
+main section.view-5 .card .card-element .title h2,
+main section.view-5 .card .card-element .title p {
+  text-transform: uppercase;
+}
+main section.view-5 .card .card-element .title h2 {
+  font-weight: 500;
+}
+main section.view-5 .card .card-element .title p {
+  font-size: 1.1rem;
+}
+main section.view-5 #card-2 {
+  background-image: url("https://assets-global.website-files.com/63cffb7c16ab3347fc9734c8/63d2ccbd2e12fa747e999689_team-02.webp");
+  background-size: cover;
+  background-position: center;
+}
+main section.view-5 #card-3 {
+  background-image: url("https://assets-global.website-files.com/63cffb7c16ab3347fc9734c8/63d2ccbdc1f945f817bf4fd7_team-03.webp");
+  background-size: cover;
+  background-position: center;
+}
+main section.view-6 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.1rem;
+  padding-top: 0;
+}
+main section.view-6 .top {
+  width: 100%;
+}
+main section.view-6 .top img {
+  width: 100%;
+  border-radius: 0.5rem;
+}
+main section.view-6 .bottom {
+  background-color: rgb(33, 33, 33);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4.8rem;
+  justify-content: space-between;
+  padding: 2rem 1.5rem;
+}
+main section.view-6 .bottom .text {
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+main section.view-6 .bottom .text h3 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+main section.view-6 .bottom .text h1 {
+  font-size: 2.1rem;
+  font-weight: 500;
+}
+main section.view-6 .bottom .btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.6rem;
+}
+main section.view-6 .bottom .btn i {
+  padding: 0.4rem;
+  border-radius: 3.1rem;
+  background-color: rgba(167, 167, 167, 0.179);
+  border: 1px solid rgba(255, 255, 255, 0.525);
+}
+main section.view-6 .bottom .btn p {
+  font-size: 1rem;
+  font-weight: 500;
+}
+main section.view-7 {
+  width: 100%;
+  padding: 1.1rem;
+  padding-top: 0;
+}
+main section.view-7 .content {
   color: black;
-  background-color: #fff;
-  text-decoration: none;
-  margin: 0px 5px 5px 5px;
-  border-radius: 20px;
-  position: absolute;
-  bottom: 0%;
+  background-color: #CEBD63;
+  border-radius: 0.5rem;
+  padding: 2rem 1.5rem;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+main section.view-7 .content .text p {
+  font-size: 1rem;
+  font-weight: 400;
+}
+main section.view-7 .content .text h1 {
+  font-weight: 400;
+  font-size: 2.1rem;
+}
+main section.view-7 .content .btn {
+  width: 100%;
+  height: 3.5rem;
+  background-color: black;
+  color: white;
+  border-radius: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.9rem;
-  font-family: sf pro;
-  font-weight: 600;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
 }
-#section-lR .right-content .right-content-bottom {
+main section.view-7 .content .btn a {
+  text-decoration: none;
+}
+main section.view-7 .content .btn a .btn-txt {
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+main footer.foot {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.1rem;
+  padding-top: 0;
+}
+main footer.foot .top {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding: 1.5rem;
+  background-color: rgb(33, 33, 33);
+  border-radius: 0.5rem;
+}
+main footer.foot .top h2 {
+  font-weight: 400;
+  font-size: 1.3rem;
+}
+main footer.foot .top .icons {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 16px 0px;
-  padding-bottom: 0;
+  justify-content: flex-end;
+  gap: 0.7rem;
+  padding-top: 1.2rem;
+  justify-content: flex-start;
 }
-#section-lR .right-content .right-content-bottom .no {
+main footer.foot .top .icons i {
+  padding: 0.8rem;
+  border-radius: 4.2rem;
+  background-color: rgba(167, 167, 167, 0.179);
+  border: 1px solid rgba(255, 255, 255, 0.525);
+}
+main footer.foot .middle {
   display: flex;
-  align-items: flex-end;
-  font-family: sf pro;
+  flex-direction: column;
+  gap: 1.5rem;
 }
-#section-lR .right-content .right-content-bottom .rc-btns {
-  font-size: 1.2rem;
-  font-weight: 600;
-  cursor: pointer;
+main footer.foot .middle .upper {
+  background-color: rgb(33, 33, 33);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+main footer.foot .middle .upper h2 {
+  font-weight: 500;
+  font-size: 1.3rem;
+}
+main footer.foot .middle .upper .text {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+main footer.foot .middle .upper .text a {
+  text-decoration: none;
+  color: rgb(189, 189, 189);
+  font-weight: 500;
+}
+main footer.foot .middle .upper .text1 a:nth-last-child(1) {
+  width: 12rem;
+  text-align: center;
+  padding: 1rem 1.3rem;
+  background-color: #cebd63;
+  color: black;
+  border-radius: 0.5rem;
+}
+main footer.foot .middle .bottom {
+  background-color: rgb(33, 33, 33);
+  text-align: center;
+  padding: 3rem;
+  border-radius: 0.5rem;
+}
+
+@media (min-width: 900px) {
+  main section.view-1 {
+    flex-direction: row;
+    padding: 1rem 2rem;
+  }
+  main section.view-1 .top,
+  main section.view-1 .bottom {
+    width: 50%;
+  }
+  main section.view-1 .bottom {
+    justify-content: space-between;
+    padding: 3.5rem;
+  }
+  main section.view-1 .bottom h3 {
+    font-size: 1.5rem;
+  }
+  main section.view-1 .bottom .text {
+    gap: 1.7rem;
+  }
+  main section.view-1 .bottom .text h1 {
+    font-size: 3rem;
+  }
+  main section.view-1 .bottom .text p {
+    width: 80%;
+    font-size: 1.2rem;
+  }
+  main section.view-2 {
+    flex-direction: row;
+    padding: 1rem 2rem;
+  }
+  main section.view-3 {
+    flex-direction: row-reverse;
+  }
+  main section.view-3 .top,
+  main section.view-3 .bottom {
+    width: 50%;
+  }
+  main section.view-3 .bottom {
+    padding: 3.5rem;
+    justify-content: space-between;
+  }
+  main section.view-3 .bottom .text h1 {
+    font-size: 3rem;
+  }
+  main section.view-3 .bottom .text .paragraphs {
+    display: flex;
+    gap: 2rem;
+  }
+  main section.view-3 .bottom .text .paragraphs p {
+    font-size: 1.1rem;
+  }
+  main section.view-4 {
+    flex-direction: row;
+    padding-top: 0.1rem;
+  }
+  main section.view-4 .bottom,
+  main section.view-4 .top {
+    width: 50%;
+  }
+  main section.view-4 .bottom {
+    justify-content: space-between;
+    padding: 3.5rem;
+  }
+  main section.view-4 .bottom .text h1 {
+    font-size: 3rem;
+  }
+  main section.view-4 .bottom .text .paragraphs {
+    display: flex;
+    gap: 2rem;
+  }
+  main section.view-4 .bottom .text .paragraphs p {
+    font-size: 1.1rem;
+  }
+  main section.sec-half {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+  }
+  main section.sec-half h2 {
+    font-size: 2.5rem;
+  }
+  main section.sec-half .btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding-right: 1rem;
+  }
+  main section.sec-half .btn i {
+    padding: 0.4rem;
+    border-radius: 3.1rem;
+    background-color: rgba(167, 167, 167, 0.179);
+    border: 1px solid rgba(255, 255, 255, 0.525);
+  }
+  main section.view-5 {
+    flex-direction: row;
+  }
+  main section.view-5 .card {
+    height: 65vh;
+  }
+  main section.view-5 .card .card-element .title h2 {
+    font-weight: 400;
+  }
+  main section.view-5 .card .card-element .title p {
+    font-size: 1rem;
+  }
+  main section.view-6 {
+    flex-direction: row;
+  }
+  main section.view-6 .top,
+  main section.view-6 .bottom {
+    width: 50%;
+  }
+  main section.view-6 .bottom {
+    padding: 4rem;
+  }
+  main section.view-6 .bottom .text h1 {
+    width: 80%;
+    font-size: 3rem;
+    font-weight: 400;
+  }
+  main section.view-7 .content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1.5rem;
+    padding: 4rem;
+  }
+  main section.view-7 .content .text h1 {
+    width: 60%;
+    font-size: 4rem;
+  }
+  main section.view-7 .content .btn {
+    width: 11rem;
+  }
+  main footer.foot {
+    flex-direction: row;
+  }
+  main footer.foot .top {
+    width: 20%;
+    justify-content: space-between;
+  }
+  main footer.foot .middle {
+    width: 90%;
+  }
+  main footer.foot .middle .upper {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  main footer.foot .middle .upper .text {
+    gap: 2rem;
+  }
 }/*# sourceMappingURL=style.css.map */
