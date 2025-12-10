@@ -11,12 +11,7 @@ body {
 }
 
 html {
-    color: white;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-body {
-    background-color: #121212;
 }
 
 @mixin flex-col($gap: 0rem) {
@@ -29,678 +24,205 @@ body {
     display: flex;
     align-items: center;
     justify-content: $just-content;
-
 }
 
-@mixin icons() {
-    width: 100%;
-    @include flex-row(flex-end);
-    gap: 0.7rem;
-    padding-top: 1.2rem;
-
-    i {
-        padding: 0.8rem;
-        border-radius: 4.2rem;
-        background-color: rgba(167, 167, 167, 0.179);
-        border: 1px solid rgba(255, 255, 255, 0.525);
-    }
-}
-
-section,footer {
-    max-width: 1600px;
+@mixin gradient() {
+    background: linear-gradient(to left top, #C576EC, #EB87BD);
 }
 
 main {
     width: 100%;
-    @include flex-col(0rem);
-    align-items: center;
 
     section.view-1 {
         width: 100%;
-        @include flex-col(1.5rem);
-        padding: 1.1rem;
-
+        @include flex-col(4rem);
+        padding: 2.5rem 0rem;
+        padding-bottom: 0;
         .top {
             width: 100%;
+            padding: 0rem 2rem;
+            @include flex-col(0.5rem);
+            align-items: center;
 
-            img {
+            h1 {
+                width: 85%;
+                text-align: center;
+                line-height: 1.2;
+            }
+
+            #paragraph {
+                font-size: 0.8rem;
+                font-weight: 500;
+                text-align: center;
+            }
+
+            .btn {
                 width: 100%;
-                border-radius: 0.5rem;
-            }
-        }
-
-        .bottom {
-            background-color: rgb(33, 33, 33);
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            @include flex-col(1.5rem);
-
-            h3 {
-                font-weight: 600;
-                font-size: 1rem;
+                @include flex-row(space-between);
+                padding: 0 1rem;
+                margin-top: 0.2rem;
             }
 
+            .btn a:nth-child(1) {
+                color: white;
+                @include gradient();
+                text-decoration: none;
+                padding: 0.4rem 1rem;
+                border-radius: 0.3rem;
 
-            .text {
-                @include flex-col(0.7rem);
-
-                h1 {
-                    font-weight: 400;
-                    font-size: 2.3rem;
+                .btn-txt {
+                    p {
+                        font-size: 0.9rem;
+                        font-weight: 500;
+                    }
                 }
+            }
 
-                p {
-                    font-size: 1.4rem;
-                    font-weight: 400;
-                    line-height: 1.4;
-                    color: rgb(157, 157, 157);
-                }
+            .btn a:nth-child(2) {
+                color: black;
+                @include flex-row();
+                gap: 0.5rem;
+                text-decoration: none;
 
-                .btn {
-                    display: flex;
-                    align-items: center;
-                    gap: 0.7rem;
+                .link-icon {
+                    @include flex-row(center);
+                    padding: 0.2rem;
+                    border: 2px dashed rgb(206, 226, 243);
+                    border-radius: 4rem;
 
                     i {
-                        padding: 0.8rem;
-                        border-radius: 4.2rem;
-                        background-color: rgba(167, 167, 167, 0.179);
-                        border: 1px solid rgba(255, 255, 255, 0.525);
-                    }
-
-                    p {
-                        font-weight: 600;
-                        font-size: 1.2rem;
                         color: white;
-                    }
-                }
-            }
-        }
-    }
-
-    section.view-2 {
-        width: 100%;
-        @include flex-col(2rem);
-        padding: 1.1rem;
-
-        .top,
-        .bottom {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-
-            .element {
-                text-align: center;
-                @include flex-col(0.3rem);
-
-                small {
-                    color: #999895;
-                    font-size: 1rem;
-                    font-weight: 600;
-                }
-
-                h2 {
-                    font-size: 2.5rem;
-                    font-weight: 400;
-                }
-            }
-        }
-    }
-
-    section.view-3 {
-        width: 100%;
-        @include flex-col(1.5rem);
-        padding: 1.1rem;
-
-        .top {
-            width: 100%;
-
-            img {
-                width: 100%;
-                border-radius: 0.5rem;
-            }
-        }
-
-        .bottom {
-            background-color: rgb(33, 33, 33);
-            border-radius: 0.5rem;
-            @include flex-col(1.5rem);
-            padding: 1.5rem;
-
-            h3 {
-                font-size: 1rem;
-                font-weight: 600;
-            }
-
-            .text {
-                @include flex-col(0.7rem);
-
-                h1 {
-                    font-size: 2.3rem;
-                    font-weight: 400;
-                }
-
-                .paragraphs {
-                    p {
-                        font-weight: 400;
-                        font-size: 1.4rem;
-                        color: rgb(157, 157, 157);
-                    }
-                }
-            }
-        }
-    }
-
-    section.view-4 {
-        width: 100%;
-        @include flex-col(1.5rem);
-        padding: 1.1rem;
-
-        .top {
-            width: 100%;
-
-            img {
-                width: 100%;
-                border-radius: 0.5rem;
-            }
-        }
-
-        .bottom {
-            background-color: rgb(33, 33, 33);
-            border-radius: 0.5rem;
-            @include flex-col(1.5rem);
-            padding: 1.5rem;
-
-            h3 {
-                font-weight: 600;
-                font-size: 1rem;
-            }
-
-            .text {
-                @include flex-col(0.7rem);
-
-                h1 {
-                    font-size: 2.3rem;
-                    font-weight: 400;
-                }
-
-                .paragraphs {
-                    p {
-                        font-weight: 400;
-                        font-size: 1.4rem;
-                        color: rgb(157, 157, 157);
-                    }
-                }
-            }
-        }
-
-    }
-
-    section.sec-half {
-        width: 100%;
-        padding: 1.1rem;
-
-        h2 {
-            font-size: 2rem;
-            font-weight: 400;
-            padding-left: 1rem;
-        }
-
-        .btn {
-            display: none;
-        }
-    }
-
-    section.view-5 {
-        width: 100%;
-        @include flex-col(1.5rem);
-        padding: 1.1rem;
-
-        .card {
-            width: 100%;
-            height: 47vh;
-            background-image: url("https://assets-global.website-files.com/63cffb7c16ab3347fc9734c8/63d2ccbd7d003dfb6a1bdecb_team-01.webp");
-            background-size: cover;
-            background-position: center;
-            padding: 1rem;
-            border-radius: 0.5rem;
-
-            .card-element {
-                width: 100%;
-                height: 100%;
-                @include flex-col(0rem);
-                justify-content: space-between;
-
-                .icons {
-                    @include icons();
-                }
-
-                .title {
-                    width: 100%;
-                    background: rgba(255, 255, 255, 0.12);
-                    backdrop-filter: blur(0.8rem);
-                    border-radius: 0.3rem;
-                    @include flex-row(space-between);
-                    padding: 1.2rem 1rem;
-
-                    h2,
-                    p {
-                        text-transform: uppercase;
-                    }
-
-                    h2 {
-                        font-weight: 500;
-                    }
-
-                    p {
+                        @include gradient();
+                        padding: 0.1rem;
                         font-size: 1.1rem;
+                        border-radius: 4.5rem;
                     }
                 }
-            }
-        }
 
-        #card-2 {
-            background-image: url("https://assets-global.website-files.com/63cffb7c16ab3347fc9734c8/63d2ccbd2e12fa747e999689_team-02.webp");
-            background-size: cover;
-            background-position: center;
-        }
-
-        #card-3 {
-            background-image: url("https://assets-global.website-files.com/63cffb7c16ab3347fc9734c8/63d2ccbdc1f945f817bf4fd7_team-03.webp");
-            background-size: cover;
-            background-position: center;
-        }
-    }
-
-    section.view-6 {
-        width: 100%;
-        @include flex-col(1.5rem);
-        padding: 1.1rem;
-        padding-top: 0;
-
-        .top {
-            width: 100%;
-
-            img {
-                width: 100%;
-                border-radius: 0.5rem;
+                .btn-txt-2 {
+                    p {
+                        font-size: 0.8rem;
+                        text-decoration: underline;
+                    }
+                }
             }
         }
 
         .bottom {
-            background-color: rgb(33, 33, 33);
-            border-radius: 0.5rem;
-            @include flex-col(4.8rem);
-            justify-content: space-between;
-            padding: 2rem 1.5rem;
-
-            .text {
-                text-transform: uppercase;
-                @include flex-col(0.5rem);
-
-                h3 {
-                    font-size: 1rem;
-                    font-weight: 600;
-                }
-
-                h1 {
-                    font-size: 2.1rem;
-                    font-weight: 500;
-                }
-
-            }
-
-            .btn {
-                @include flex-row();
-                gap: 0.6rem;
-
-                i {
-                    padding: 0.4rem;
-                    border-radius: 3.1rem;
-                    background-color: rgba(167, 167, 167, 0.179);
-                    border: 1px solid rgba(255, 255, 255, 0.525);
-                }
-
-                p {
-                    font-size: 1rem;
-                    font-weight: 500;
-                }
-            }
-
-        }
-    }
-
-    section.view-7 {
-        width: 100%;
-        padding: 1.1rem;
-        padding-top: 0;
-
-        .content {
-            color: black;
-            background-color: #CEBD63;
-            border-radius: 0.5rem;
-            padding: 2rem 1.5rem;
-            text-transform: uppercase;
-            @include flex-col(0.5rem);
-
-            .text {
-                p {
-                    font-size: 1rem;
-                    font-weight: 400;
-                }
-
-                h1 {
-                    font-weight: 400;
-                    font-size: 2.1rem;
-                }
-            }
-
-            .btn {
-                width: 100%;
-                height: 3.5rem;
-                background-color: black;
-                color: white;
-                border-radius: 0.5rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                gap: 0.5rem;
-                margin-top: 0.8rem;
-
-                a {
-                    text-decoration: none;
-
-                    .btn-txt {
-                        color: white;
-                        font-size: 0.8rem;
-                        font-weight: 500;
-                    }
-                }
-
-            }
-        }
-    }
-
-    footer.foot {
-        width: 100%;
-        @include flex-col(1.5rem);
-        padding: 1.1rem;
-        padding-top: 0;
-
-        .top {
+            width: 100%;
             @include flex-col(4rem);
-            padding: 1.5rem;
-            background-color: rgb(33, 33, 33);
-            border-radius: 0.5rem;
+            align-items: center;
 
-            h2{
-                font-weight: 400;
-                font-size: 1.3rem;
-            }
+            .outer {
+                width: 38vh;
+                height: 38vh;
+                @include flex-row(center);
+                border: 2px dashed #C576EC;
+                border-radius: 50%;
 
-            .icons{
-                @include icons();
-                justify-content: flex-start;
-            }
-        }
+                .inner {
+                    width: 35vh;
+                    height: 35vh;
+                    @include gradient();
+                    border-radius: 50%;
+                    position: relative;
 
-
-        .middle{
-            @include flex-col(1.5rem);
-            .upper{
-                background-color: rgb(33, 33, 33);
-                padding: 1.5rem;
-                border-radius: 0.5rem;
-                @include flex-col(3rem);
-
-                h2{
-                    font-weight: 500;
-                    font-size: 1.3rem;
-                }
-
-                .text{
-                    @include flex-col(1.3rem);
-    
-                    a{
-                        text-decoration:none;
-                        color: rgb(189, 189, 189);
-                        font-weight: 500;
-    
+                    img {
+                        width: 100%;
+                        height: 60vh;
+                        object-fit: cover;
+                        position: absolute;
+                        top: -40%;
                     }
                 }
-    
-                .text1 a:nth-last-child(1){
-                    width: 12rem;
-                    text-align: center;
-                    padding: 1rem 1.3rem;
-                    background-color: #cebd63;
-                    color: black;
-                    border-radius: 0.5rem;
-    
-                }   
             }
 
-            .bottom{
-                background-color: rgb(33, 33, 33);
-                text-align: center;
-                padding: 3rem;
-                border-radius: 0.5rem;
+            .bottom-logo-bar {
+                width: 100%;
+                padding: 1.1rem 0;  
+                @include gradient();
+                @include flex-row(space-between);
+                position: relative;
+                z-index: 2;
+                overflow: hidden;
+        
+                h2 {
+                    font-size: 1rem;
+                    color: white;
+                }
             }
         }
-
     }
-
 
 }
 
+@media (min-width:1400px) {
+    main{
+        width: 100%;
 
-@media (min-width:900px) {
-    main {
-        section.view-1 {
+        section.view-1{
+            width: 100%;
             flex-direction: row;
-            padding: 1rem 2rem;
-
-            .top,
-            .bottom {
-                width: 50%;
-            }
-
-            .bottom {
-                justify-content: space-between;
-                padding: 3.5rem;
-
-                h3 {
-                    font-size: 1.5rem;
-                }
-
-                .text {
-                    gap: 1.7rem;
-
-                    h1 {
-                        font-size: 3rem;
-                    }
-
-                    p {
-                        width: 80%;
-                        font-size: 1.2rem;
-                    }
-                }
-
-            }
-
-        }
-
-        section.view-2 {
-            flex-direction: row;
-            padding: 1rem 2rem;
-        }
-
-        section.view-3 {
-            flex-direction: row-reverse;
-
-            .top,
-            .bottom {
-                width: 50%;
-            }
-
-            .bottom {
-                padding: 3.5rem;
-                justify-content: space-between;
-
-                .text {
-                    h1 {
-                        font-size: 3rem;
-                    }
-
-                    .paragraphs {
-                        display: flex;
-                        gap: 2rem;
-
-                        p {
-                            font-size: 1.1rem;
-                        }
-                    }
-                }
-            }
-        }
-
-        section.view-4 {
-            flex-direction: row;
-            padding-top: 0.1rem;
-
-            .bottom,
-            .top {
-                width: 50%;
-            }
-
-            .bottom {
-                justify-content: space-between;
-                padding: 3.5rem;
-
-                .text {
-                    h1 {
-                        font-size: 3rem;
-                    }
-
-                    .paragraphs {
-                        display: flex;
-                        gap: 2rem;
-
-                        p {
-                            font-size: 1.1rem;
-                        }
-                    }
-                }
-            }
-        }
-
-        section.sec-half {
-            display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+            gap: 0;
 
-            h2 {
-                font-size: 2.5rem;
-            }
-
-            .btn {
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-                padding-right: 1rem;
-
-                i {
-                    padding: 0.4rem;
-                    border-radius: 3.1rem;
-                    background-color: rgba(167, 167, 167, 0.179);
-                    border: 1px solid rgba(255, 255, 255, 0.525);
-                }
-            }
-        }
-
-        section.view-5 {
-            flex-direction: row;
-
-            .card {
-                height: 65vh;
-
-                .card-element {
-
-                    .title {
-                        h2 {
-                            font-weight: 400;
-                        }
-
-                        p {
-                            font-size: 1rem;
-                        }
-                    }
-                }
-            }
-        }
-
-        section.view-6 {
-            flex-direction: row;
-
-            .top,
-            .bottom {
+            .top,.bottom{
                 width: 50%;
             }
-
-            .bottom {
-                padding: 4rem;
-
-                .text {
-                    h1 {
-                        width: 80%;
-                        font-size: 3rem;
-                        font-weight: 400;
-                    }
-                }
-            }
-        }
-
-        section.view-7 {
-            .content {
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: flex-end;
-                gap: 1.5rem;
-                padding: 4rem;
-
-                .text {
-                    h1 {
-                        width: 60%;
-                        font-size: 4rem;
-                    }
-
-                }
-
-                .btn {
-                    width: 11rem;
-                }
-
-            }
-        }
-
-        footer.foot{
-            flex-direction: row;
             .top{
-                width: 20%;
-                justify-content: space-between;
-            }
-            .middle{
-                width: 90%;
-                .upper{
-                    flex-direction: row;
-                    justify-content: space-around;
+                align-items: flex-start;
+                padding:10vh 0 0 20vh;
+                h1{
+                    width: 70%;
+                    font-size: 3.5rem;
+                    text-align: left;
+                    letter-spacing: 1px;
+                }
+                
+                #paragraph{
+                    width: 50%;
+                    text-align: left;
+                }
 
-                    .text{
-                        gap: 2rem;
+                .btn{
+                    justify-content: flex-start;
+                    gap: 3rem;
+                    padding: 0;
+                    margin-top: 0.8rem;
+                }
+            }
+
+            .bottom{
+                align-items: flex-start;
+                justify-content: flex-end;
+                padding: 20vh 0 0 0;
+
+                .outer{
+                    width: 47vh;
+                    height: 47vh;
+
+                    .inner{
+                        width: 45vh;
+                        height: 45vh;
+
+                        img{
+                            width: 100%;
+                            height: 80vh;
+                            // object-fit: cover;
+                            top: -37%;
+                        }
                     }
                 }
+
+                .bottom-logo-bar{
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    justify-content: space-around;
+                    padding: 1.7rem 0;
+                }
+
 
             }
         }
