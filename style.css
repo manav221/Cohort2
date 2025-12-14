@@ -2,13 +2,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: #f8f8f8;
 }
 
-html,
-body {
-  width: 100%;
+html, body {
   height: 100%;
+  width: 100%;
 }
 
 html {
@@ -16,396 +14,142 @@ html {
 }
 
 body {
-  background: #000;
+  background-color: rgba(230, 230, 230, 0.934);
 }
 
 main {
   width: 100%;
+  height: 100vh;
 }
-main nav.navbar {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  align-items: flex-start;
-  padding: 1rem;
-  padding-right: 1.5rem;
-  padding-bottom: 0.5rem;
-  -webkit-backdrop-filter: blur(12px);
-          backdrop-filter: blur(12px);
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10000;
-}
-main nav.navbar .first-half {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0.5rem;
-}
-main nav.navbar .first-half img {
-  width: auto;
-  height: 3.5vh;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-main nav.navbar .first-half .nav-txt {
-  width: 50%;
-}
-main nav.navbar .first-half .nav-txt h4 {
-  font-size: 0.9rem;
-  font-weight: 600;
-}
-main nav.navbar .second-half {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 1.5rem;
-}
-main nav.navbar .second-half .nav-links,
-main nav.navbar .second-half .profile-logo,
-main nav.navbar .second-half .bell-icon {
-  display: none;
-}
-main nav.navbar .second-half .icon {
-  font-size: 1.2rem;
-}
-main section.view1 {
+main .cards {
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 2rem;
-  padding-top: 3.5rem;
-  padding-bottom: 0;
+  align-items: center;
+  padding: 1rem;
 }
-main section.view1 .top {
-  width: 100%;
+main .cards .card {
+  width: 20rem;
+  background-color: white;
+  border-radius: 1.7rem;
+  padding: clamp(1.5rem, 4vw, 2rem);
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  cursor: pointer;
+  transition: transform cubic-bezier(0.075, 0.82, 0.165, 1) 0.3s;
 }
-main section.view1 .top .top-img {
-  width: auto;
-  height: 25vh;
-  overflow: hidden;
-  position: relative;
-}
-main section.view1 .top .top-img img {
+main .cards .card .price {
   width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
-main section.view1 .top .top-img .tag {
-  position: absolute;
-  top: 6%;
-  right: 6%;
-  background-color: rgb(0, 0, 0);
-  padding: 0.2rem 0.5rem;
-  border-radius: 0.3rem;
-  text-align: center;
+main .cards .card .price h1 {
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  font-weight: 700;
+  color: #1E1948;
+}
+main .cards .card .price h1 span {
+  font-size: 1rem;
   font-weight: 500;
-  font-size: 0.7rem;
+  color: #7C798D;
 }
-main section.view1 .top h2 {
-  font-size: 1.8rem;
-  font-weight: 600;
-  line-height: 1;
-}
-main section.view1 .bottom {
+main .cards .card .details {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 0.7rem;
+  justify-content: center;
 }
-main section.view1 .bottom .perks {
-  width: 100%;
+main .cards .card .details .name h1 {
+  font-size: clamp(1.2rem, 3vw, 1.7rem);
+  font-weight: 500;
+  color: #1E1948;
+}
+main .cards .card .details .desc p {
+  font-size: clamp(0.85rem, 2.2vw, 0.95rem);
+  font-weight: 500;
+  color: #7C798D;
+}
+main .cards .card .details .benifits {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding-top: 0.4rem;
+}
+main .cards .card .details .benifits .feature {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.7rem;
 }
-main section.view1 .bottom .perks .perk {
-  background-color: #212121;
+main .cards .card .details .benifits .feature i {
+  background-color: rgba(59, 59, 59, 0.211);
+  color: rgb(9, 57, 199);
+  padding: 0.1rem;
+  border-radius: 50%;
+  font-size: 0.9rem;
+}
+main .cards .card .details .benifits .feature p {
+  text-transform: capitalize;
+  color: #7C798D;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(0.85rem, 2vw, 0.95rem);
+}
+main .cards .card .btn {
+  width: 80%;
+  padding: 0.8rem 2.5rem;
+  background-color: #EEF1FB;
+  border-radius: 999px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 1rem;
-  border-radius: 0.3rem;
+  margin: 0.7rem 0rem;
 }
-main section.view1 .bottom .perks .perk h4 {
-  font-size: 0.8rem;
-  font-weight: 700;
-}
-main section.view1 .bottom .perks .perk h4 span {
-  color: #02e797;
-  font-size: 0.8rem;
+main .cards .card .btn a {
+  text-decoration: none;
+  color: #4D64C2;
   font-weight: 500;
 }
-main section.view1 .bottom .perks .pair-1,
-main section.view1 .bottom .perks .pair-2 {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+main .cards .card-2 {
+  color: white;
+  background-color: #728cec;
 }
-main section.view1 .bottom .tags {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0.5rem;
+main .cards .card-2 .price h1 {
+  color: white;
 }
-main section.view1 .bottom .tags .tag {
-  background-color: #212121;
-  padding: 0.5rem 1.5rem;
-  border-radius: 0.3rem;
+main .cards .card-2 .price h1 span {
+  color: white;
 }
-main section.view1 .bottom .tags .tag .name {
-  text-align: center;
-  width: 99%;
+main .cards .card-2 .details .name h1 {
+  color: white;
 }
-main section.view1 .bottom .tags .tag .name p {
-  font-size: 0.9rem;
-  font-weight: 600;
+main .cards .card-2 .details .desc p {
+  color: white;
 }
-main section.view1 .bottom .tags .pair-1,
-main section.view1 .bottom .tags .pair-2 {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+main .cards .card-2 .details .benifits .feature p {
+  color: white;
 }
-main section.view1 .bottom .tags .tag-5 {
-  display: none;
+main .cards .card-2 .details .benifits .feature i {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.436);
 }
-main section.view1 .bottom .price {
-  width: 100%;
+main .cards .card-2 .btn {
+  background-color: white;
 }
-main section.view1 .bottom .price p {
-  font-size: 1.5rem;
-  font-weight: 700;
-}
-main section.view1 .bottom .price p #discountPrice {
-  color: #02e797;
-}
-main section.view1 .bottom .price p #originalPrice {
-  color: #cbcbcb;
-  text-decoration: line-through;
-  text-decoration-color: white;
-  font-size: 1rem;
-}
-main section.view1 .bottom .price p small {
-  font-size: 1rem;
-}
-main section.view1 .bottom .price .discountLine {
-  color: #02e797;
-  font-size: 0.8rem;
-}
-main section.view1 .bottom .buy-btns {
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-main section.view1 .bottom .buy-btns .btn {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 0.8rem;
-}
-main section.view1 .bottom .buy-btns .btn a {
-  width: 100%;
-  text-decoration: none;
-  padding: 1.5rem 1.2rem;
-  background-color: #353535;
-  border-radius: 0.4rem;
-  font-weight: 600;
-  text-align: center;
-  cursor: pointer;
-}
-main section.view1 .bottom .buy-btns .btn a:nth-child(1) {
-  background-color: #02e797;
-  font-size: 1rem;
-  font-weight: 800;
-}
-main section.view1 .bottom .buy-btns .btn a:nth-child(2) {
-  padding: 0.9rem;
-  font-weight: 600;
-}
-main section.view1 .bottom .buy-btns .punch-line {
-  width: -moz-max-content;
-  width: max-content;
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-main section.view1 .bottom .buy-btns .punch-line span {
-  color: #02e797;
-  font-weight: 400;
+main .cards .card:hover {
+  transform: scale(1.1);
 }
 
-@media (min-width: 900px) {
+@media (min-width: 768px) {
   main {
     width: 100%;
-    display: grid;
-    grid-template-rows: 10% 1fr;
-    grid-template-areas: "navbar" "section-1";
-    gap: 1.7rem;
   }
-  main nav.navbar {
-    grid-area: navbar;
-    justify-content: space-between;
-    padding: 1rem 5rem;
-  }
-  main nav.navbar .first-half {
-    gap: 1rem;
-    cursor: pointer;
-  }
-  main nav.navbar .first-half img {
-    height: 6.2vh;
-  }
-  main nav.navbar .first-half .nav-txt h4 {
-    font-size: 1.1rem;
-    font-weight: 400;
-  }
-  main nav.navbar .second-half {
-    gap: 4rem;
-  }
-  main nav.navbar .second-half .nav-links,
-  main nav.navbar .second-half .profile-logo,
-  main nav.navbar .second-half .bell-icon {
-    display: inline;
-  }
-  main nav.navbar .second-half .call-icon,
-  main nav.navbar .second-half .menu-icon {
-    display: none;
-  }
-  main nav.navbar .second-half a {
-    text-decoration: none;
-    font-size: 1.1rem;
-  }
-  main nav.navbar .second-half .bell-icon {
-    font-size: 1.5rem;
-  }
-  main nav.navbar .second-half a#myAccount {
-    padding: 0.4rem 0.7rem;
-    background-color: #70AC3C;
-    border-radius: 50%;
-    font-size: 0.8rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  main nav.navbar .second-half a#myAccount div {
-    position: relative;
-    font-size: 1rem;
-    bottom: 0.1rem;
-  }
-  main section.view1 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0rem 5rem;
-    padding-top: 0rem;
-    grid-area: section-1;
-    gap: 0;
-  }
-  main section.view1 .top {
+  main .cards {
     width: 100%;
-    display: grid;
-    grid-template-columns: 42% 1fr;
-    grid-template-areas: "title img";
-    gap: 9rem;
-  }
-  main section.view1 .top .top-img {
-    grid-area: img;
-    width: auto;
-    height: 45vh;
-  }
-  main section.view1 .top .top-img img {
     height: 100%;
-    width: 100%;
-    -o-object-fit: cover;
-       object-fit: cover;
-  }
-  main section.view1 .top h2 {
-    grid-area: title;
-    font-size: 3rem;
-  }
-  main section.view1 .bottom {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 35% 25% 1fr;
-    grid-template-areas: "tags perks" "price perks" "buy-btns perks";
-    align-items: start;
-  }
-  main section.view1 .bottom .perks {
-    grid-area: perks;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding: 1rem 1rem;
-    background-color: #1E1E1E;
-    height: 25vh;
-    border-bottom-right-radius: 0.5rem;
-    border-bottom-left-radius: 0.5rem;
-  }
-  main section.view1 .bottom .perks .perk {
-    background-color: #151515;
-    justify-content: flex-start;
-    padding: 0.8rem;
-    padding-right: 8rem;
-  }
-  main section.view1 .bottom .perks .perk h4 {
-    font-size: 1rem;
-  }
-  main section.view1 .bottom .perks .perk h4 span {
-    font-size: 1rem;
-    font-weight: 400;
-  }
-  main section.view1 .bottom .perks .pair-1, main section.view1 .bottom .perks .pair-2 {
-    gap: 1rem;
-  }
-  main section.view1 .bottom .tags {
-    grid-area: tags;
-    flex-wrap: wrap;
-  }
-  main section.view1 .bottom .tags .tag-5 {
-    display: inline;
-  }
-  main section.view1 .bottom .tags .tag {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-  }
-  main section.view1 .bottom .tags .tag .name {
-    width: 100%;
-  }
-  main section.view1 .bottom .tags .tag .name p {
-    font-size: 1rem;
-    font-weight: 700;
-  }
-  main section.view1 .bottom .tags .pair-1, main section.view1 .bottom .tags .pair-2 {
     flex-direction: row;
-  }
-  main section.view1 .bottom .tags .pair-2 .tag .name p {
-    font-size: 0.9rem;
-  }
-  main section.view1 .bottom .tags .pair-2 p {
-    font-size: 0.8rem;
-  }
-  main section.view1 .bottom .price {
-    grid-area: price;
-  }
-  main section.view1 .bottom .price p {
-    font-size: 2.5rem;
-  }
-  main section.view1 .bottom .price p #originalPrice {
-    font-size: 1.4rem;
-  }
-  main section.view1 .bottom .price p small {
-    font-size: 1.4rem;
-  }
-  main section.view1 .bottom .buy-btns {
-    grid-area: buy-btns;
+    align-items: center;
+    justify-content: center;
   }
 }/*# sourceMappingURL=style.css.map */
