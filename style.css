@@ -16,91 +16,113 @@ html {
 main {
   width: 100%;
   min-height: 100vh;
+  background-color: #e7ffdf;
+}
+main .cards {
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-main .post {
-  width: min(100%, 28.125rem);
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-main .post .post-header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 0.8rem;
-}
-main .post .post-header .usr-detail {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   gap: 1rem;
 }
-main .post .post-header .usr-detail .profile-img {
-  height: 3rem;
-  width: 3rem;
-  border-radius: 999px;
-  overflow: hidden;
+main .cards .card {
+  width: min(100%, 25rem);
+  padding: 1rem;
+  align-self: center;
+  justify-self: center;
 }
-main .post .post-header .usr-detail .profile-img img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-main .post .post-header .usr-detail .usr-name-city p {
-  color: #666;
-}
-main .post .more-options i {
-  font-size: 1.2rem;
-  font-weight: 600;
-}
-main .post-images .img {
-  aspect-ratio: 1/1;
-}
-main .post-images .img img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-main .post-actions {
+main .cards .card .top {
+  aspect-ratio: 2/1.2;
+  border-radius: 1rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 0 0.8rem;
+  justify-content: center;
+  background: linear-gradient(to top left, rgba(139, 183, 221, 0.7490196078), rgba(126, 194, 9, 0.8470588235));
+  cursor: pointer;
 }
-main .post-actions .right-action {
+main .cards .card .top img {
+  width: 50%;
+}
+main .cards .card .bottom {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 1rem;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 4rem;
+  flex-direction: column;
+  gap: clamp(1.5rem, 2.3vw, 1.7rem);
+  position: relative;
+  bottom: 25px;
 }
-main .post-actions .right-action .right-action-icons {
+main .cards .card .bottom .content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+main .cards .card .bottom .content .title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+main .cards .card .bottom .content .title h2 {
+  text-transform: capitalize;
+  font-size: clamp(1.3rem, 2.5vw, 1.6rem);
+}
+main .cards .card .bottom .content .title .tag {
   display: flex;
   align-items: center;
   justify-content: flex-start;
   gap: 0.7rem;
 }
-main .post-actions i {
-  font-size: 1.9rem;
-  font-weight: 200;
+main .cards .card .bottom .content .title .tag span {
+  padding: 0.1rem;
+  border: 2px solid #666;
+  border-radius: 5px;
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
+  letter-spacing: 1px;
 }
-main .post-caption {
-  padding: 0rem 0.8rem;
+main .cards .card .bottom .content .shoe-description {
+  max-width: 40ch;
 }
-main .post-caption p {
-  width: 35ch;
-  font-size: 1.1rem;
-  font-family: Arial, Helvetica, sans-serif;
+main .cards .card .bottom .content .shoe-description p {
+  font-size: clamp(1.1rem, 2vw, 1.2rem);
   font-weight: 400;
+  color: #474747;
 }
-main .post-caption small {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;
-  color: rgb(58, 58, 58);
-  font-size: 0.85rem;
+main .cards .card .bottom .pricing {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5rem;
+}
+main .cards .card .bottom .pricing .price small {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-weight: 500;
+  text-transform: uppercase;
+}
+main .cards .card .bottom .pricing .price p {
+  font-weight: 700;
+  font-size: clamp(1.35rem, 3vw, 1.6rem);
+}
+main .cards .card .bottom .pricing .cart-btn {
+  width: 100%;
+}
+main .cards .card .bottom .pricing .cart-btn .btn {
+  width: 100%;
+  padding: 1rem;
+  background-color: #7FC209;
+  text-align: center;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+main .cards .card .bottom .pricing .cart-btn .btn a {
+  color: white;
+  text-decoration: none;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 500;
 }/*# sourceMappingURL=style.css.map */
