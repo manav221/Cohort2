@@ -5,135 +5,22 @@
 }
 
 html,body{
-    width: 100%;
     height: 100%;
-}
-
-html{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-@mixin flex-row($content:flex-start){
-    display: flex;
-    align-items: center;
-    justify-content: $content;
-}
-
-@mixin flex-col($gap:0rem){
-    display: flex;
-    flex-direction: column;
-    gap: $gap;
+    width: 100%;
 }
 
 main{
     width: 100%;
-    min-height: 100vh;
-    background-color: #e7ffdf;
-
-    .cards{
-        width: 100%;
-        height: 100%;
-        @include flex-row(center);
-
+    min-width: 100vh;
+    .photo-gallery{
         display: grid;
         grid-template-columns: repeat(auto-fit,minmax(18rem,1fr));
+        grid-auto-rows: 25rem;
         gap: 1rem;
-
-        .card{
-            width: min(100%,25rem);
-            padding: 1rem;
-            align-self: center;
-            justify-self: center;
-            .top{
-                aspect-ratio: 2/1.2;
-                border-radius: 1rem;
-                @include flex-row(center);
-                background:linear-gradient(to top left, #8bb7ddbf,#7ec209d8);
-                cursor: pointer;
-
-                img{
-                    width: 50%;
-                }
-            }
-
-            .bottom{
-                width: 100%;
-                background-color: #fff;
-                border-radius: 1rem;
-                padding: 1rem;
-                @include flex-col(clamp(1.5rem,2.3vw,1.7rem));
-                position: relative;
-                bottom: 25px;
-
-                .content{
-                    width: 100%;
-                    @include flex-col(1.3rem);
-                    .title{
-                        @include flex-col(0.7rem);
-                        h2{
-                            text-transform: capitalize;
-                            font-size: clamp(1.3rem,2.5vw,1.6rem);
-                        }
-
-                        .tag{
-                            @include flex-row();
-                            gap: 0.7rem;
-                            span{
-                                padding: 0.1rem;
-                                border: 2px solid #666;
-                                border-radius: 5px;
-                                font-size: clamp(0.9rem,1.8vw,1rem);
-                                letter-spacing: 1px;
-                            }
-                        }
-                    }
-
-                    .shoe-description{
-                        max-width: 40ch;
-                        p{
-                            font-size: clamp(1.1rem,2vw,1.2rem);
-                            font-weight: 400;
-                            color: #474747;
-                        }
-                    }
-                }
-
-                .pricing{
-                    width: 100%;
-                    @include flex-row();
-                    gap: 5rem;
-                    .price{
-                        small{
-                            font-size: clamp(1rem,2.5vw,1.3rem);
-                            font-weight: 500;
-                            text-transform: uppercase;
-                        }
-
-                        p{
-                            font-weight: 700;
-                            font-size: clamp(1.35rem,3vw,1.6rem);
-                        }
-                    }
-
-                    .cart-btn{
-                        width: 100%;
-                        .btn{
-                            width: 100%;
-                            padding: 1rem;
-                            background-color: #7FC209;
-                            text-align: center;
-                            border-radius: 0.5rem;
-                            cursor: pointer;
-                            a{
-                                color: white;
-                                text-decoration: none;
-                                font-size: clamp(1rem,2vw,1.2rem);
-                                font-weight: 500;
-                            }
-                        }
-                    }
-                }
-            }
+        img{
+            width: 100%;
+            border-radius: 1rem;
         }
+
     }
 }
