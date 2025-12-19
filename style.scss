@@ -5,196 +5,91 @@
 }
 
 html,body{
+    width: 100%;
     height: 100%;
-    width: 100%;
 }
 
-html{
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-
-@mixin flex-row($content:flex-start){
+body{
     display: flex;
     align-items: center;
-    justify-content: $content;
+    justify-content: center;
 }
 
-@mixin flex-col($gap:0rem){
-    display: flex;
-    flex-direction: column;
-    gap: $gap;
-}
-
-
-nav,section{
-    max-width: 1500px;
-}
-
-main{
-    width: 100%;
-    min-height: 100vh;
-    @include flex-col(0.5rem);
-    align-items: center;
-    padding: 1rem;
-    nav{
+.card{
+    display: grid;
+    width: 25rem;
+    border-radius: 1rem;
+    place-items: end;
+    overflow: hidden;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.215, 0.610, 0.355, 1);
+    img{
         width: 100%;
-        @include flex-row(space-between);
+        grid-column: 1/2;
+        grid-row: 1/2;
+        object-fit: cover;
+    }
+
+    .text{
+        width: 100%;
+        height: max-content;
+        color: white;
         padding: 1rem;
+        font-family: Arial, Helvetica, sans-serif;
         border-radius: 1rem;
-        background-color: #EFEEEC;
-
-        .navlinks,.nav-btns{
-            display: none;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+        backdrop-filter: blur(5px);
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+        align-items: center;
+        grid-column: 1/2;
+        grid-row: 1/2;
+        position: absolute;
+        bottom: -8rem;
+        z-index: 1000;
+        transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        
+        h3{
+            font-size: 1rem;
+            color: black;
         }
 
-        .logo{
-            h1{
-                font-size: 2.1rem;
-            }
+        p{
+            width: 35ch;
+            font-size: 0.9rem;
+            text-align: center;
+            color: black;
         }
 
-
-        .menu-btn{
-            i{
-                font-size: 1.8rem;
-            }
+        a{
+            width: max-content;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            background-color: #fff;
+            color: black;
+            border-radius: 999px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
     }
 
-    section.view-1{
-        width: 100%;
-        height: 100%;
-        background-color: #EFEEEC;
-        border-radius: 1rem;
-        padding: 1rem clamp(1rem,2.5vw,2.5rem);
-        @include flex-col(1rem);
-        .top{
-            @include flex-col(clamp(1rem,2vw,2.5rem));
-            align-items: center;
+    .text a:hover{
+        background-color: black;
+        color: white;
+    }
 
-            .ratings{
-                width: max-content;
-                background-color: #e0e0e0;
-                padding: 0.5rem 0.8rem;
-                border-radius: 999px;
-                @include flex-row(center);
-                gap: 0.5rem;
-                p{
-                    font-weight: 500;
-                }
+}
 
-            }
-
-            .content{
-                width: clamp(35ch,60vw,45ch);
-                @include flex-col(0.5rem);
-                text-align: center;
-                h1{
-                    font-size: clamp(1.5rem,2.8vw,2rem);
-                }
-
-                p{
-                    font-weight: 500;
-                    font-size: clamp(1rem,2vw,1.1rem);
-                }
-
-            }
-
-            .section-btn{
-                @include flex-row();
-                gap: 1rem;
-                a{
-                    text-decoration: none;
-                    color: white;
-                    padding: 0.7rem 1.3rem;
-                    font-size: clamp(1.1rem,1.8vw,1.15rem);
-                    font-weight: 500;
-                    background-color: rgb(255, 128, 0);
-                    border-radius: 999px;
-                }
-            }
-
-            .section-btn a:nth-child(2){
-                color: rgb(255, 128, 0);
-                background-color: transparent;
-                border: 2px solid rgb(255, 128, 0);
-            }
-
-
-        }
-
-        .bottom{
-            aspect-ratio: 3/2;
-            img{
-                width: 100%;
-                height: 100%;
-                border-radius: 1rem;
-            }
-        }
-        
+.card:hover{
+    .text{
+        bottom: 0;
     }
 }
 
+.card:hover{
+    transform: translateY(-10px);
 
-@media (min-width:900px) {
-    main{
-        width: 100%;
-        
-        nav{
-            width: 100%;
-            .menu-btn{
-                display: none;
-            }
-
-            .navlinks,.nav-btns{
-                display: block;
-            }
-
-
-            .navlinks{
-                @include flex-row(center);
-                gap: 2rem;
-                a{
-                    color: black;
-                    text-decoration: none;
-                    font-weight: 500;
-                }
-            }
-
-            .nav-btns{
-                @include flex-row(center);
-                gap: 0.5rem;
-                a{
-                    color: black;
-                    text-decoration: none;
-                    padding: 0.7rem 1.3rem;
-                    font-weight: 500;
-                    background-color: white;
-                    border-radius: 999px;
-                }
-            }
-
-            .nav-btns a:nth-child(2){
-                color: white;
-                background-color: rgb(255, 128, 0);
-            }
-        }
-
-        section.view-1{
-            width: 100%;
-            flex-direction: row;
-            justify-content: space-between;
-            .top,.left{
-                align-items: start;
-                justify-content: center;
-                .content{
-                    text-align: left;
-                }
-            }
-
-            .bottom,.right{
-                aspect-ratio: 5/4;
-            }
-        }
-    }
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
