@@ -1,67 +1,35 @@
-let teams = [
-    {
-        teamName:"CSK",
-        primary:"yellow",
-        secondary:"#0066B3",
-        fullName:"Chennai Super Kings",
-        trophies:5,
-        captain:"MSD"
-    },
-    {
-        teamName:"MI",
-        primary:"blue",
-        secondary:"#FFD141",
-        fullName:"Mumbai Indians",
-        trophies:5,
-        captain:"Rohit Sharma"
-    },
-    {
-        teamName:"RR",
-        primary:"rgb(222, 13, 128)",
-        secondary:"blue",
-        fullName:"Rajasthan Royals",
-        trophies:1,
-        captain:"Sanju Samson"
-    },
-    {
-        teamName:"RCB",
-        primary:"Red",
-        secondary:"navyblue",
-        fullName:"Royal Challenger Bengaluru",
-        trophies:1,
-        captain:"Virat Kholi"
-    },
-    {
-        teamName:"KKR",
-        primary:"purple",
-        secondary:"white",
-        fullName:"Kolkata Knight Riders",
-        trophies:2,
-        captain:"Rinku Singh"
-    }
-
+let quotes = [
+    "Aaj kamayin ga toh kal khayin ga",
+    "Ma nhi toh kon bae",
+    "America kya kheta tha",
+    "Aasan haiii",
+    "Oo bhosdi waiter"
 ]
 
 
-
-let teamBox = document.querySelector(".box");
-let teamDetails = document.querySelector(".details");
+let main = document.querySelector("main");
 let btn = document.querySelector("button");
 
-
 btn.addEventListener("click",function(){
-    let randomIndex = Math.floor(Math.random() * teams.length);
-    teamBox.innerHTML = teams[randomIndex].teamName;
-    teamBox.style.backgroundColor = teams[randomIndex].primary
-    teamDetails.style.backgroundColor = teams[randomIndex].secondary
-    let clutter = "";
-    let props = ["fullName","trophies","captain"];
-    for(let i = 0;i<props.length;i++){
-        for(let key in teams[randomIndex]){
-            if(key === props[i]){
-                clutter += `<div>${teams[randomIndex][key]}</div>`;
-            }
-        }
-    }
-    teamDetails.innerHTML = clutter;
+    let randomIndex = Math.floor(Math.random() * quotes.length);
+    let x = Math.random() * 100;
+    let y = Math.random() * 100;
+    let rotation = Math.random() * 360;
+    let scl = Math.random() * 3;
+    let red = Math.floor(Math.random() * 256);
+    let green = Math.floor(Math.random() * 256);
+    let blue = Math.floor(Math.random() * 256);
+
+    let h1 = document.createElement('h1');
+
+    h1.innerHTML = quotes[randomIndex];
+
+    h1.style.color = "#fff";
+    h1.style.position = "absolute";
+    h1.style.top = y + "%";
+    h1.style.left = x + "%";
+    h1.style.rotate = `${rotation}deg`;
+    h1.style.scale = scl;
+    h1.style.color = `rgb(${red},${green},${blue})`
+    main.appendChild(h1);
 })
