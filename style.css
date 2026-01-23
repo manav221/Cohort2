@@ -8,7 +8,6 @@
 html,body{
     height: 100%;
     width: 100%;
-    background-color: #000000;
     overflow: hidden;
 }
 
@@ -19,20 +18,92 @@ main{
     align-items: center;
     justify-content: center;
     gap: 1.2rem;
+    flex-direction: column;
 }
 
-main button{
-    border: none;
+
+main .userInput input{
     padding: 1rem 1.5rem;
-    font-size: 1.3rem;
-    font-weight: 600;
-    border-radius: 0.6rem;
-    cursor: pointer;
-    position: relative;
-    z-index: 99;
+    border-radius: 999px;
+    border: none;
+    font-size: 1rem;
+    outline: none;
+    background-color: #303030;
+    color: #ffffff;
 }
 
-button:active{
+input::placeholder{
+    color: #bababa;
+}
+main .userInput{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+main .userInput .addTask{
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem;
+    border-radius: 50%;
+    color: #3e3e3e;
+    font-size: 1.1rem;
+    transition: all ease 0.2s;
+    cursor: pointer;
+}
+
+.addTask:hover{
+    background-color: #a3a3a330;
+}
+
+.addTask:active{
+    transform: scale(0.95);
+}
+
+
+main .showTask{
+    width: 30rem;
+    height: auto;
+    padding: 1rem 2rem;
+    background-color: #3e3e3e;
+    border-radius: 1.2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.showTask .task{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    list-style-type: none;
+}
+.showTask .completed{
+    text-decoration: line-through rgb(250, 0, 0) 2px;
+
+    color: gray;
+}
+.showTask .task li{
+    font-size: 0.9rem;
+    color: #d6d6d6;
+}
+.task .taskOptions .option{
+    font-size: 1.3rem;
+    padding: 0.3rem;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    transition: all linear 0.2s;
+}
+
+.option:hover{
+    background-color: #a3a3a330;
+}
+
+.option:active{
     transform: scale(0.95);
 }
 
