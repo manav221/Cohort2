@@ -66,7 +66,7 @@ userInp.addEventListener("keydown", function (e) {
 
 showTask.addEventListener("click", function (event) {
     let elemClassList = event.target;
-    let parentElem = event.target.parentElement.parentElement;
+    let parentElem = elemClassList.parentElement.parentElement;
     let isCompleted;
 
     elemClassList.classList.forEach(function (val) {
