@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
+    color: black;
 }
 
 html,body{
@@ -17,91 +18,66 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1.2rem;
     flex-direction: column;
-}
-
-
-main .userInput input{
-    padding: 1rem 1.5rem;
-    border-radius: 999px;
-    border: none;
-    font-size: 1rem;
-    outline: none;
-    background-color: #303030;
-    color: #ffffff;
-}
-
-input::placeholder{
-    color: #bababa;
-}
-main .userInput{
-    display: flex;
-    align-items: center;
-    justify-content: center;
     gap: 0.5rem;
 }
-main .userInput .addTask{
-    display: inline-block;
-    align-items: center;
-    justify-content: center;
-    padding: 0.8rem;
-    border-radius: 50%;
-    color: #3e3e3e;
-    font-size: 1.1rem;
-    transition: all ease 0.2s;
-    cursor: pointer;
-}
-
-.addTask:hover{
-    background-color: #a3a3a330;
-}
-
-.addTask:active{
-    transform: scale(0.95);
-}
 
 
-main .showTask{
-    width: 30rem;
+main .faq{
+    width: min(29rem,50%);
     height: auto;
-    padding: 1rem 2rem;
-    background-color: #3e3e3e;
+    border: 1px solid #8a8a8a9f;
     border-radius: 1.2rem;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    padding: 0.2rem;
 }
 
-.showTask .task{
+main .faq .quest{
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: white;
-    list-style-type: none;
-}
-.showTask .completed{
-    text-decoration: line-through rgb(250, 0, 0) 2px;
-}
-.showTask .task li{
-    font-size: 0.9rem;
-    color: #d6d6d6;
-}
-.task .taskOptions .option{
-    font-size: 1.3rem;
-    padding: 0.3rem;
-    border-radius: 50%;
-    display: inline-block;
+    background-color: #c4c3c35f;
+    padding: 1.2rem;
+    border-radius: 1rem;
+
     cursor: pointer;
-    transition: all linear 0.2s;
+    transition: all ease 0.1s;
 }
 
-.option:hover{
-    background-color: #a3a3a330;
+.quest h2{
+    font-size: 1.3rem;
 }
 
-.option:active{
-    transform: scale(0.95);
+main .faq .quest i{
+    font-size: 1.3rem;
+    cursor: pointer;
+    transition: all ease 0.1s;
+    border-radius: 1rem;
+    padding: 0.3rem;
+    transition: all ease 0.3s;
 }
 
+i:active{
+    transform: scale(0.9);
+}
+
+
+i:hover{
+    background-color: #37333355;
+}
+
+
+main .faq .answer{
+    display: none;
+    padding: 1.5rem 1rem;
+    transition: all ease 0.2s;
+}
+
+.answer p{
+    font-size: 0.9rem;
+}
+
+
+.faq:hover .quest{
+    background-color: #bababa7f;
+}
