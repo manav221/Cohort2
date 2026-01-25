@@ -49,6 +49,7 @@ main .faq .quest{
 }
 
 main .faq .quest i{
+    display: none;
     font-size: 1.3rem;
     cursor: pointer;
     transition: all ease 0.1s;
