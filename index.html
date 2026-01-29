@@ -5,26 +5,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Focus Timer</title>
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.8.0/fonts/remixicon.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <main>
-        <div class="download-card">
+        <nav class="sideBar">
             <div class="top">
-                <p>Download songs in <span>mp3</span> format.</p>
-                <div class="outer">
-                    <div class="inner"></div>
+                <div class="logo icon">
+                    <a href="#"><img
+                            src="https://imgs.search.brave.com/qUnM_A0p8Mtb-uvsrgpQgsdDUMRM7C0IYe4402FAO98/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cG5nYWxsLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAxNi8w/Ny9QaW50ZXJlc3Qt/UE5HLUNsaXBhcnQu/cG5n"
+                            alt=""></a>
+                </div>
+                <div class="homeIcon icon">
+                    <a href="#"><i class="ri-home-6-line"></i></a>
+                </div>
+
+                <div class="ideasIcon icon">
+                    <a href="#"><i class="ri-compass-3-line"></i></a>
+                </div>
+
+                <div class="usrBoardIcon icon">
+                    <a href="#"><i class="ri-layout-2-line"></i></a>
+                </div>
+
+                <div class="createIcon icon">
+                    <a href="#"><i class="ri-apps-2-add-line"></i></a>
+                </div>
+
+                <div class="updatesIcon icon">
+                    <a href="#"><i class="ri-notification-3-fill"></i></a>
+                </div>
+
+                <div class="messagesIcon icon">
+                    <a href="#"><i class="ri-chat-1-line"></i></a>
                 </div>
             </div>
 
             <div class="bottom">
-                <h3>0%</h3>
-                <button><i class="ri-download-line"></i> DOWNLOAD</button>
+                <div class="settingIcon icon">
+                    <a href="#"><i class="ri-settings-3-line"></i></a>
+                </div>
             </div>
+        </nav>
 
-        </div>
+        <section class="view1">
+            <div class="search-Bar">
+                <div class="search-container">
+                    <div class="inputArea">
+                        <i class="ri-search-line search-icon"></i>
+                        <input type="search" name="searchBar" placeholder="Search">
+                    </div>
+
+                    <div class="suggestions hidden">
+                        
+                    </div>
+                </div>
+
+                <div class="accounts">
+                    <div class="profile">
+                        <div class="usrProfile">
+                            <span>M</span>
+                        </div>
+                    </div>
+                    <div class="yourAccounts">
+                        <i class="ri-arrow-down-s-line"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="overlay hidden"></div>
+            <div class="posts ">
+            </div>
+        </section>
     </main>
     <script src="script.js"></script>
 </body>

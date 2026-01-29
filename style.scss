@@ -1,0 +1,250 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+@mixin flex-col($gap) {
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+
+}
+
+@mixin flex-row() {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+main {
+    height: 100%;
+    width: 100%;
+    @include flex-row();
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+
+    nav.sideBar {
+        height: 100vh;
+        width: 5rem;
+        padding: 1.5rem 1rem;
+        border-right: 1px solid rgba(97, 97, 97, 0.329);
+        @include flex-col(1rem);
+        align-items: center;
+        justify-content: space-between;
+
+        .icon {
+            padding: 0.6rem;
+            border-radius: 1rem;
+            @include flex-row();
+            justify-content: center;
+            transition: all ease 0.15s;
+            cursor: pointer;
+        }
+
+        .icon:hover {
+            background-color: #dbdbdb52;
+        }
+
+        .icon:active {
+            transform: scale(0.9)
+        }
+
+        .icon a {
+            text-decoration: none;
+            font-size: 1.6rem;
+            color: black;
+        }
+
+        .top {
+            @include flex-col(1.5rem);
+
+            .logo {
+                width: 3rem;
+                height: 3rem;
+
+                a img {
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+
+
+
+    section.view1 {
+        width: 100%;
+
+        .search-Bar {
+            width: 100%;
+            padding: 1rem;
+            @include flex-row();
+            gap: 0.5rem;
+            position: relative;
+
+            .search-container {
+                width: 100%;
+
+                .search-icon {
+                    font-size: 1.1rem;
+                    position: relative;
+                    bottom: 0.1rem;
+                }
+
+                .inputArea {
+                    width: 100%;
+                    background-color: #E5E5E0;
+                    padding: 0 1rem;
+                    border-radius: 0.5rem;
+                    position: relative;
+                    @include flex-row();
+                    gap: 0.5rem;
+                }
+
+                input {
+                    width: 100%;
+                    border: none;
+                    outline: none;
+                    background-color: transparent;
+                    padding: 1rem 0;
+                    caret-color: #666666;
+                    font-size: 1.1rem;
+                    font-weight: 500;
+                }
+
+                input::placeholder {
+                    font-size: 1rem;
+                }
+
+
+                .suggestions {
+                    width: 92%;
+                    background-color: #ffffff;
+                    padding: 0 1rem;
+                    position: absolute;
+                    z-index: 999;
+                    border-radius: 1rem;
+                    
+                    .suggest {
+                        @include flex-row();
+                        gap: 0.5rem;
+                        margin: 0.5rem 0;
+                        padding: 0.5rem;
+                        border-radius: 0.5rem;
+                        cursor: pointer;
+                        i {
+                            position: relative;
+                            bottom: 1px;
+                        }
+
+                        h3 {
+                            font-weight: 600;
+                        }
+                    }
+
+                    .suggest:hover{
+                        background-color: #dbdbdb52;
+                    }
+                }
+
+
+            }
+
+            .inputArea:hover {
+                background-color: #3232324a;
+            }
+
+            .accounts {
+                @include flex-row();
+                gap: 0.5rem;
+
+                .profile {
+                    padding: 0.5rem;
+                    border-radius: 1rem;
+                    cursor: pointer;
+
+                    .usrProfile {
+                        height: 2.1rem;
+                        width: 2.1rem;
+                        background-color: #EA4E1F;
+                        border-radius: 50%;
+                        @include flex-row();
+                        justify-content: center;
+
+                        span {
+                            font-size: 1.1rem;
+                            color: white;
+                        }
+
+                    }
+                }
+
+                .profile:hover {
+                    background-color: #dbdbdb52;
+                }
+
+                .yourAccounts {
+                    font-size: 1.5rem;
+                    font-weight: 100;
+                    border-radius: 0.5rem;
+                    @include flex-row();
+                    justify-content: center;
+                    cursor: pointer;
+                }
+
+                .yourAccounts:hover {
+                    background-color: #dbdbdb52;
+                }
+            }
+        }
+
+
+        .posts {
+            width: 100%;
+            columns: 6;
+            column-gap: 1.2rem;
+            padding: 1rem;
+        }
+
+        .post {
+            margin-bottom: 1rem;
+
+            img {
+                max-width: 100%;
+                min-width: 100%;
+                object-fit: cover;
+                border-radius: 2rem;
+                cursor: pointer;
+            }
+
+            img:hover {
+                opacity: 0.95;
+            }
+        }
+
+        .overlay {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            columns: 6;
+            column-gap: 1.2rem;
+            padding: 1rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+    }
+
+}
