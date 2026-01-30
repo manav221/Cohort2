@@ -4,81 +4,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Focus Timer</title>
+    <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
     <main>
-        <nav class="sideBar">
-            <div class="top">
-                <div class="logo icon">
-                    <a href="#"><img
-                            src="https://imgs.search.brave.com/qUnM_A0p8Mtb-uvsrgpQgsdDUMRM7C0IYe4402FAO98/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly93d3cu/cG5nYWxsLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAxNi8w/Ny9QaW50ZXJlc3Qt/UE5HLUNsaXBhcnQu/cG5n"
-                            alt=""></a>
-                </div>
-                <div class="homeIcon icon">
-                    <a href="#"><i class="ri-home-6-line"></i></a>
-                </div>
-
-                <div class="ideasIcon icon">
-                    <a href="#"><i class="ri-compass-3-line"></i></a>
-                </div>
-
-                <div class="usrBoardIcon icon">
-                    <a href="#"><i class="ri-layout-2-line"></i></a>
-                </div>
-
-                <div class="createIcon icon">
-                    <a href="#"><i class="ri-apps-2-add-line"></i></a>
-                </div>
-
-                <div class="updatesIcon icon">
-                    <a href="#"><i class="ri-notification-3-fill"></i></a>
-                </div>
-
-                <div class="messagesIcon icon">
-                    <a href="#"><i class="ri-chat-1-line"></i></a>
-                </div>
-            </div>
-
-            <div class="bottom">
-                <div class="settingIcon icon">
-                    <a href="#"><i class="ri-settings-3-line"></i></a>
-                </div>
+        <nav>
+            <div class="navLinks">
+                <a href="#"><i class="ri-menu-2-line"></i></a>
+                <a href="#"><i class="ri-shopping-bag-2-fill cartIcon"></i></a>
             </div>
         </nav>
 
-        <section class="view1">
-            <div class="search-Bar">
-                <div class="search-container">
-                    <div class="inputArea">
-                        <i class="ri-search-line search-icon"></i>
-                        <input type="search" name="searchBar" placeholder="Search">
-                    </div>
-
-                    <div class="suggestions hidden">
-                        
-                    </div>
-                </div>
-
-                <div class="accounts">
-                    <div class="profile">
-                        <div class="usrProfile">
-                            <span>M</span>
-                        </div>
-                    </div>
-                    <div class="yourAccounts">
-                        <i class="ri-arrow-down-s-line"></i>
-                    </div>
-                </div>
-            </div>
+        <div class="cart hidden">
             
-            <div class="overlay hidden"></div>
-            <div class="posts ">
-            </div>
+        </div>
+        
+        <section class="appContent">
+            <section class="view1">
+
+                <div class="search-container">
+                    <input type="search" placeholder="Search">
+                    <div class="search-filter">
+                        <i class="ri-equalizer-line"></i>
+                    </div>
+                </div>
+
+                <div class="categories">
+                    <div class="homeIcon icon">
+                        <a href="#"><i class="ri-home-2-line"></i></a>
+                    </div>
+                    <div class="scrollIcon icon">
+                        <a href="#"><i class="ri-scroll-to-bottom-line"></i></a>
+                    </div>
+                    <div class="sotreIcon icon">
+                        <a href="#"><i class="ri-store-2-line"></i></a>
+                    </div>
+                    <div class="saveIcon icon">
+                        <a href="#"><i class="ri-bookmark-line"></i></a>
+                    </div>
+                    <div class="worldIcon icon">
+                        <a href="#"><i class="ri-global-line"></i></a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="view2">
+                <div class="product-cards">
+                </div>
+
+                <div class="popular-title">
+                    <h3>Popular</h3>
+                </div>
+
+                <div class="popular-products-cards">
+                    
+                </div>
+
+
+            </section>
         </section>
+
+        <footer>
+            <div class="home icon">
+                <i class="ri-home-2-fill"></i>
+            </div>
+            <div class="like icon">
+                <i class="ri-heart-3-fill"></i>
+            </div>
+            <div class="shop icon">
+                <i class="ri-shopping-bag-fill"></i>
+            </div>
+            <div class="setting icon">
+                <i class="ri-settings-fill"></i>
+            </div>
+            <div class="profile icon">
+                <i class="ri-user-fill"></i>
+            </div>
+        </footer>
+
     </main>
     <script src="script.js"></script>
 </body>

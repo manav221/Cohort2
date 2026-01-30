@@ -1,70 +1,111 @@
-let appContent = [
-    {postName:"Nature",image:"https://i.pinimg.com/736x/02/59/69/0259699a168aea21ba838cd4873a1fdc.jpg"},
+let products = [
+    {name:"Kevin Sofa",description:"very softy and light",price:"15,000",image:"https://images.unsplash.com/photo-1684165610413-2401399e0e59?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHNvZmF8ZW58MHx8MHx8fDA%3D"},
 
-    {postName:"nature house",image:"https://i.pinimg.com/736x/07/a3/05/07a305f688f4afbf5a1d9830f1e24184.jpg"},
+    {name:"Round Chair",description:"Best for Office",price:"5,000",image:"https://images.unsplash.com/photo-1612372606404-0ab33e7187ee?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8Y2hhaXJ8ZW58MHx8MHx8fDA%3D"},
 
-    {postName:"los angles night",image:"https://images.unsplash.com/photo-1514439827219-9137a0b99245?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bG9zJTIwYW5nZWxlcyUyMG5pZ2h0fGVufDB8fDB8fHww"},
+    {name:"Kari Chair",description:"Morden Chair of House",price:"6,500",image:"https://images.unsplash.com/photo-1519947486511-46149fa0a254?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGNoYWlyfGVufDB8fDB8fHww"},
+];
 
-    {postName:"deer",image:"https://images.unsplash.com/photo-1484406566174-9da000fda645?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8YW5pbWFsc3xlbnwwfHwwfHx8MA%3D%3D"},
+let popularProducts = [
+    {name:"Kari Chair",description:"Morden Chair of House",price:"6,500",image:"https://images.unsplash.com/photo-1519947486511-46149fa0a254?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGNoYWlyfGVufDB8fDB8fHww"},
 
-    {postName:"library",image:"https://plus.unsplash.com/premium_photo-1677567996070-68fa4181775a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bGVhcm5pbmd8ZW58MHx8MHx8fDA%3D"},
-
-    {postName:"flowers",image:"https://images.unsplash.com/photo-1460039230329-eb070fc6c77c?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8Zmxvd2Vyc3xlbnwwfHwwfHx8MA%3D%3D"},
-
-    {postName:"tech",image:"https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fHRlY2h8ZW58MHx8MHx8fDA%3D"}
+    {name:"Kevin Sofa",description:"very softy and light",price:"15,000",image:"https://images.unsplash.com/photo-1684165610413-2401399e0e59?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHNvZmF8ZW58MHx8MHx8fDA%3D"},
 ]
 
-function showCards(arr){
-    let posts = document.querySelector(".posts");
-    arr.forEach(function(post,indx){
-        let div = document.createElement("div",`post-${indx+1}`);
-        div.classList.add("post",`post-${indx}`);
 
-        let photo = document.createElement('img');
-        photo.src = post.image;
-        
-        div.appendChild(photo);
-        posts.appendChild(div);
+function addProduct(products){
+    let clutter = "";
+    let productCards = document.querySelector(".product-cards");
+
+    products.forEach(function(product,indx){
+        clutter += `<div class="card">
+                            <div class="product-img">
+                                <img src="${product.image}" alt="">
+                            </div>
+    
+                            <div class="bottom">
+                                <div class="product-details">
+                                    <h2 class="product-name">${product.name}</h2>
+                                    <h4 class="product-description">${product.description}</h4>
+                                    <h3 class="product-price">$${product.price}</h3>
+                                </div>
+    
+                                <div data-index="${indx}" class="add add-to-cart">
+                                    <i data-index="${indx}" class="ri-add-line add"></i>
+                                </div>
+                            </div>
+                        </div>`
+    
+    })
+    
+    productCards.innerHTML = clutter;
+    clutter = "";
+}
+
+function showPopularProducts(popularProducts){
+    let clutter = "";
+    popularProducts.forEach(function(popular){
+        clutter += `<div class="popular-card">
+                        <div class="popular-product-img">
+                            <img src="${popular.image}" alt="">
+                        </div>
+
+                        <div class="details">
+                            <div class="product-name">
+                                <h2>${popular.name}</h2>
+                                <h3 class="product-description">${popular.description}</h3>
+                            </div>
+                            
+                            <div class="product-price">
+                                <h4>$${popular.price}</h4>
+                            </div>
+                        </div>
+                    </div>`
+    })
+
+    document.querySelector(".popular-products-cards").innerHTML = clutter;
+    clutter = "";
+}
+
+let cart = [];
+function addToCart(){
+    let product = document.querySelector(".product-cards");
+    product.addEventListener("click",function(event){
+        if(event.target.classList.contains("add")){
+            cart.push(products[Number(event.target.dataset.index)])
+        }
     })
 }
 
-function handleSearch(){
-    let inp = document.querySelector("input");
-    let overlay = document.querySelector(".overlay");
-    let showSuggestions = document.querySelector(".suggestions");
 
-    inp.addEventListener("focus",function(){
-        overlay.style.display = "block";
-        showSuggestions.style.display = "block";
-    })
+function showCart(){
+    let usrCart = document.querySelector('.cartIcon');
+    let cartDiv = document.querySelector(".cart");
+    let clutter = "";
+    usrCart.addEventListener("click",function(){
+        cartDiv.style.display = "flex";
     
-    inp.addEventListener("blur",function(){
-        overlay.style.display = "none";
-        showSuggestions.style.display = "none";
-    })
-
-    inp.addEventListener("input",function(){
-        let showSuggestions = document.querySelector(".suggestions");
-        let clutter = "";
-        let filteredArr = appContent.filter(function(post,indx){
-            if(inp.value === ""){
-                return false;
-            }else{
-                return post.postName.toLowerCase().startsWith(inp.value);
-            }
+        cart.forEach(function(product){
+            clutter += `<div class="product">
+                    <div class="product-img">
+                        <img src="${product.image}" alt="">
+                    </div>
+                    <div class="details">
+                        <h2 class="product-name">${product.name}</h2>
+                        <h4 class="product-price">$${product.price}</h4>
+                    </div>
+                </div>`
         })
-
-        filteredArr.forEach(function(post){
-            clutter += `<div class="suggest">
-                            <i class="ri-search-line search-icon"></i>
-                            <h3>${post.postName}</h3>
-                        </div>`;
-        })
-        
-        showSuggestions.innerHTML = clutter;
+    
+        cartDiv.innerHTML = clutter;
         clutter = "";
     })
 }
 
-showCards(appContent);
-handleSearch();
+
+
+
+addProduct(products);
+showPopularProducts(popularProducts);
+addToCart();
+showCart();
