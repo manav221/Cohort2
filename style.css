@@ -1,14 +1,9 @@
-@font-face {
-    font-family: "gilroy";
-    src: url("./gilroy/Gilroy-Regular.ttf");
-}
-
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: white;
-    font-family: "gilroy";
+    /* color: white; */
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 html,body{
@@ -16,292 +11,74 @@ html,body{
     width: 100%;
 }
 
-body{
+main{
+    width: 100%;
+    height: 100%;
+    padding: 2rem;
     background-color: #1d1d1d;
 }
 
-
-main{
-    height: 100%;
+.cards{
     width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
-    position: relative;
+    gap: 1rem;
 }
 
-main .all-songs{
-    width: min(18rem,80%);
-    height: 45vh;
+.cards .card{
+    width: min(20rem,80%);
+    padding: 1.5rem 0;
     background-color: #fff;
-    border-radius: 2rem;
-    padding: 1rem;
-    padding-bottom: 0.5rem;
-    position: relative;
+    border-radius: 1.2rem;
     display: flex;
     flex-direction: column;
-    gap: 0.3rem;
-    overflow-y: scroll;
-    scroll-behavior: smooth;
-
-}
-
-.all-songs::-webkit-scrollbar{
-    display: none;
-}
-
-.all-songs .song{
-    width: 100%;
-    padding: 0.5rem;
-    border-bottom: 2px solid #5e5b5b48;
-    display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    flex-shrink: 0;
+    gap: 1rem;
     cursor: pointer;
     transition: all ease 0.2s;
-    
 }
-
-.song:hover{
-    border-radius: 1rem;
-    background-color: #6767673c;
-    border-color: white;
-
+.card:hover{
+    transform: scale(1.1);
 }
-.song:active{
-    transform: scale(0.95);
-}
-
-.song .song-details{
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-}
-
-.song-details .song-img{
+.card .card-img{
     width: 4rem;
     height: 4rem;
-    border-radius: 1rem;
-    background-color: gray;
+    border-radius: 50%;
     overflow: hidden;
-    cursor: pointer;
-    transition: 0.2s;
-    position: relative;
 }
 
-.song-img:hover{
-    opacity: 0.9;
-}
-
-.song-img img{
+.card-img img{
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: top;
 }
 
-.song-details .song-artist-title{
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-}
-
-.song-artist-title span{
-    color: black;
-    word-wrap: nowrap;
-    text-overflow: ellipsis;
-    
-}
-
-.song-artist-title .song-name{
-    font-size: 1.1rem;
-    font-weight: 600;
-}
-
-.song-artist-title .artist{
-    font-size: 0.85rem;
-    color: #5f5f5fcb;
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: none;
-    transition: all linear 0.2s;
-}
-
-.song .more-icon{
-    padding: 0.5rem;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: 0.2s;
-}
-.song .more-icon i{
-    color: black;
-    font-size: 1.2rem;
-    font-weight: 600;
-}
-
-.more-icon:hover{
-    background-color: #a5a4a44b;
-}
-
-.more-icon:active{
-    transform: scale(0.95);
-}
-
-.artist:hover{
-    color: #323232;
-    text-decoration: underline;
-}
-
-.all-songs .player{
-    width: 100%;
-    padding: 0.8rem;
-    border-radius: 2rem;
-    background-color: #ffffff;
+.card .details{
+    text-align: center;
     display: flex;
     align-items: center;
-    gap: 1rem;
-    position: sticky;
-    bottom: 0;
-    left: 0;
-    /* bottom: 15%; */
-    z-index: 999;
-    box-shadow: 12px 5px 30px rgba(0, 0, 0, 0.382);
-}
-
-.player .song-img{
-    width: 3.5rem;
-    height: 3.5rem;
-    border-radius: 1rem;
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
-    transition: all ease 0.2s;
-}
-
-.player .song-img img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.player .song-img:active{
-    transform: scale(0.97);
-}
-
-.player .song-img .play-pause{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.play-pause{
-    font-size: 2rem;
-}
-.play,.pause{
-    color: rgb(42, 41, 41);
-}
-
-.player .song-controls{
-    display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
-.player .song-controls .controls{
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
+
+.card .details .name{
+    font-size: 1.2rem;
+    white-space: nowrap;
+    text-transform: capitalize;
 }
 
+.card .details .profession{
+    font-size: 0.9rem;
+    white-space: nowrap;
+    text-transform: capitalize;
+    color: crimson;
+}
 
-.controls .next,.previous{
-    padding: 0.3rem;
-    border-radius: 50%;
-    cursor: pointer;
+.card .details .description{
+    width: 13rem;
+    font-size: 0.8rem;
     text-align: center;
-    transition: all ease 0.2s;
-}
-.skip:hover{
-    background-color: #a5a4a44b;
-}
-.skip:active{
-    transform: scale(0.95);
-}
-
-.player .song-controls
-.controls .song-artist-title{
-    width: 3.45rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.2rem;
-    overflow: hidden;
-}
-
-
-
-.player .song-controls
-.controls
-.song-artist-title .song-name{
-    font-size: 1rem;
-    text-wrap: nowrap;
-    animation: scroll-left 10s linear infinite;
-}
-.player .song-controls
-.controls
-.song-artist-title .artist{
-    font-size: 0.75rem;
-    text-wrap: nowrap;
-}
-/* animation created by chatgpt and modify by me */
-@keyframes scroll-left {
-  from {
-    transform: translateX(60%);
-  }
-  to {
-    transform: translateX(-80%);
-  }
-}
-
-.song-controls
-.controls .previous,.next{
-    font-size: 1.6rem;
-    color: #1d1d1d;
-}
-
-.seek-bar{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    /* background-color: black; */
-    /* gap: 0.1rem; */
-}
-
-.time{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: 0.65rem;
-    font-weight: 600;
-
-}
-
-.current-time,.duration{
-    color: black;
-}
-
-.seek-bar .progress-bar{
-    width: 100%;
-    height: 10px;
-    background: black;
-}
-
-main .all-songs .hidden{
-    display: none;
 }
