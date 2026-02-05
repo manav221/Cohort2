@@ -2,8 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* color: white; */
     font-family: Arial, Helvetica, sans-serif;
+    color: white;
 }
 
 html,body{
@@ -14,71 +14,78 @@ html,body{
 main{
     width: 100%;
     height: 100%;
-    padding: 2rem;
-    background-color: #1d1d1d;
-}
-
-.cards{
-    width: 100%;
-    height: 100%;
+    background-color: #121212;
     display: flex;
     align-items: center;
-    gap: 1rem;
-}
-
-.cards .card{
-    width: min(20rem,80%);
-    padding: 1.5rem 0;
-    background-color: #fff;
-    border-radius: 1.2rem;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    cursor: pointer;
-    transition: all ease 0.2s;
-}
-.card:hover{
-    transform: scale(1.1);
-}
-.card .card-img{
-    width: 4rem;
-    height: 4rem;
-    border-radius: 50%;
-    overflow: hidden;
 }
 
-.card-img img{
+/* .hidden{
+    display: none;
+} */
+
+
+.piano{
+    width: 50rem;
+    height: 18rem;
+    background-color: #fff;
+    padding: 1rem 0;
+}
+
+.piano .white-keys{
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: top;
-}
-
-.card .details{
-    text-align: center;
     display: flex;
     align-items: center;
-    flex-direction: column;
-    gap: 0.5rem;
+    position: relative;
 }
 
-.card .details .name{
-    font-size: 1.2rem;
-    white-space: nowrap;
+.white-keys .piano-key{
+    height: 100%;
+    flex-shrink: 0;
+    flex-grow: 1;
+    border: 1px solid #4f4f4f8b;
+    border-bottom-left-radius: 0.2rem;
+    border-bottom-right-radius: 0.2rem;
+    background-color: #fff;
+    box-shadow: 0 5px 0 0 #D2D2D2;
+    cursor: pointer;
+    transition: all linear 0.1s;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    position: relative; 
+}
+
+.white-keys span{
     text-transform: capitalize;
+    font-size: 1rem;
+    font-weight: 300;
+    color: black;
+    margin-bottom: 0.9rem;
 }
 
-.card .details .profession{
-    font-size: 0.9rem;
-    white-space: nowrap;
-    text-transform: capitalize;
-    color: crimson;
+.piano-key .black-keys{
+    position: absolute;
+    width: 1.2rem;
+    height: 45%;
+    margin-left: rem;
+    background-color: rgb(5, 5, 5);
+    top: 0;
+    right: -30%;
+    z-index: 999;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 }
 
-.card .details .description{
-    width: 13rem;
+.black-keys span{
+    color: white;
     font-size: 0.8rem;
-    text-align: center;
+}
+
+.pressed{
+    transform: translateY(5px);
+    box-shadow: none;
+    background-color: #a6a6a678;
 }
