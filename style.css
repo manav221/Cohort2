@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 html,body{
@@ -11,22 +13,69 @@ html,body{
 
 body{
     background-color: black;
-    position: relative;
 }
 
-:root{
-    --x:50px;
-    --y:50px;
-}
-body video{
-    width: 100%;
-    height: 100%;
-}
-.box{
+main{
     height: 100%;
     width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: radial-gradient(150px at var(--x) var(--y),rgba(0, 0, 0, 0),rgba(0, 0, 0, 0.816));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@property --angle{
+    syntax:"<angle>";
+    initial-value: 0deg;
+    inherits:false;
+}
+
+@keyframes borderRotate{
+    from{
+        --angle:0deg;
+    }
+    to{
+        --angle:360deg;
+    }
+}
+
+.card{
+    max-width: 20rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-inline: 0.7rem;
+    padding-bottom: 0.7rem;
+    border-radius: 2rem;
+    border: 0px solid rgba(255, 255, 255, 0);
+    transition: all linear 0.3s;
+    box-shadow: 0 0 0rem #F5B02F;
+    background: linear-gradient(black) padding-box,
+                conic-gradient(from var(--angle),black,black,black,yellow,#E9652B,black) border-box;
+    animation: borderRotate 4s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+    text-shadow: 0 0 0rem #F5B02F;
+    color: #E9652B;
+}
+
+.card:hover{
+    border-width: 5px;
+    animation-play-state: running;
+    box-shadow: 0 0 3rem #F5B02F;
+    text-shadow: 0 0 1rem #F5B02F;
+
+
+}
+.card img{
+    width: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.card h2{
+    font-size: 1.5rem;
+}
+.card p{
+    font-size: 1.2rem;
 }
