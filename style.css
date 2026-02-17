@@ -16,66 +16,103 @@ body{
 }
 
 main{
-    height: 100%;
     width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-@property --angle{
-    syntax:"<angle>";
-    initial-value: 0deg;
-    inherits:false;
-}
-
-@keyframes borderRotate{
-    from{
-        --angle:0deg;
-    }
-    to{
-        --angle:360deg;
-    }
-}
-
-.card{
-    max-width: 20rem;
+main .game-board{
+    width: 50vw;
+    height: 80vh;
     display: flex;
     flex-direction: column;
+    /* gap: 1rem; */
+    border-radius: 1rem;
+    background-color: beige;
+    overflow: hidden;
+}
+
+.game-board .details{
+    max-width: 100%;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(95, 134, 16);
+}
+
+.details .dets-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.details div span{
+    background-color: #fff;
+    color: black;
+    border-radius: 0.5rem;
+    padding:0.5rem 1rem;
+    font-weight: 600;
+    margin-left: 1rem;
+}
+
+.details div h4{
+    font-weight: 700;
+}
+
+
+
+.game-board .bubbles{
+    flex-grow: 1;
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(3rem,1fr));
+    grid-template-rows: repeat(auto-fill,minmax(3rem,1fr));
     gap: 0.5rem;
-    padding-inline: 0.7rem;
-    padding-bottom: 0.7rem;
-    border-radius: 2rem;
-    border: 0px solid rgba(255, 255, 255, 0);
-    transition: all linear 0.3s;
-    box-shadow: 0 0 0rem #F5B02F;
-    background: linear-gradient(black) padding-box,
-                conic-gradient(from var(--angle),black,black,black,yellow,#E9652B,black) border-box;
-    animation: borderRotate 4s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-play-state: paused;
-    text-shadow: 0 0 0rem #F5B02F;
-    color: #E9652B;
 }
 
-.card:hover{
-    border-width: 5px;
-    animation-play-state: running;
-    box-shadow: 0 0 3rem #F5B02F;
-    text-shadow: 0 0 1rem #F5B02F;
-
-
-}
-.card img{
-    width: 100%;
-    object-fit: cover;
-    object-position: top;
+.bubbles .bubble{
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: rgba(106, 142, 35, 0.614);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    cursor: pointer;
 }
 
-.card h2{
-    font-size: 1.5rem;
+.bubble:hover{
+    background-color: rgba(60, 87, 7, 0.614);
 }
-.card p{
+
+.game-over{
+    width: 20rem;
+    height: 20rem;
+    border-radius: 1rem;
+    background-color: #ebe9e94f;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    backdrop-filter: blur(12px);
+}
+.game-over h2{
+    color: black;
+
+}
+
+.game-over p{
     font-size: 1.2rem;
+    color: black;
+    font-weight: 600;
+}
+.game-over p span{
+    color: black;
+}
+.hidden{
+    display: none;
 }
