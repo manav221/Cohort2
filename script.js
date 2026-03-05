@@ -1,150 +1,276 @@
-const gameBoard = document.querySelector(".all-blocks");
-const scrElem = document.querySelector(".score span");
-const snkLength = document.querySelector(".snake-length span");
-let score = 0;
-let direction = "right";
-let foodCordinates = null;
-let isOut = false;
+const boards = document.querySelectorAll(".board");
+const cards = document.querySelectorAll(".card");
+const modal = select(".modal");
+const modalSec = select(".modal-2");
+const addTaskBtn = select(".new-task");
+const modalOverlay = document.querySelectorAll(".overlay");
+const createTaskBtn = select("#create-task");
+const searchBox = select("#search-box");
+let dragedElement = null;
+let lstBoard = boards[0];
+let currentBoard = boards[0];
+let allTaskData = {};
 
-const blockHeight = 40;
-const blockWidth = 40;
-const blocks = [];
-let cols = Math.floor(gameBoard.clientWidth / blockWidth);
-let rows = Math.floor(gameBoard.clientHeight / blockHeight);
-(function () {
-    for (let row = 0; row < rows; row++) {
-        for (let col = 0; col < cols; col++) {
-            const div = document.createElement("div");
-            div.classList.add("block");
-            // div.innerText = `${row},${col}`;
-            blocks[`${row},${col}`] = div;
-            gameBoard.appendChild(div);
+
+if (localStorage.getItem("tasks")) {
+    let data = JSON.parse(localStorage.getItem("tasks"));
+    for(let board in data){
+        let b = document.querySelector(`#${board}`);
+        data[board].forEach(function(c){
+            NewTask(c,`#${board}`);
+            currentBoard = b;
+            taskCountChng();
+        })
+    }
+}
+
+function select(elem) {
+    return document.querySelector(elem);
+}
+
+function dragEventOnBoards(board) {
+    board.addEventListener("dragenter", function (dets) {
+        dets.preventDefault();
+        board.classList.add("hover-over");
+    })
+
+    board.addEventListener("dragleave", function (dets) {
+        dets.preventDefault();
+        board.classList.remove("hover-over");
+    })
+
+    board.addEventListener("dragover", function (dets) {
+        dets.preventDefault();
+        board.classList.add("hover-over");
+    })
+
+    board.addEventListener("drop", function (dets) {
+        dets.preventDefault();
+        board.children[1].appendChild(dragedElement);
+        board.classList.remove("hover-over");
+        currentBoard = board;
+        taskCountChng();
+        saveTasks();
+    })
+}
+
+function toggleCreateNewTaskBtn() {
+    addTaskBtn.addEventListener("click", function () {
+        select("#task-title").value = "";
+        select("#task-desc").value = "";
+        modal.style.display = "flex";
+    })
+
+    modalOverlay.forEach(function (overlay) {
+        overlay.addEventListener("click", function () {
+            overlay.parentElement.style.display = "none";
+        })
+    })
+
+    document.querySelectorAll(".new-task")
+        .forEach((btn) => {
+            btn.addEventListener("click", function () {
+                addTaskBtn.click();
+            })
+
+        })
+}
+
+function taskPriorityChng(priority, priorityElem) {
+    const priorities = {
+        "Low": function (elem) {
+            elem.classList.add("priority-low");
+        },
+        "Medium": function (elem) {
+            elem.classList.add("priority-medium");
+        },
+        "High": function (elem) {
+            elem.classList.add("priority-high");
         }
     }
-})();
 
+    if (priorities[priority]) {
+        priorities[priority](priorityElem)
+    }
+}
 
-const snake = [
-    { r: 0, c: 0 },
-    { r: 0, c: 1 },
-    { r: 0, c: 2 }
-]
+function createTask(taskDets) {
+    let card = document.createElement("div");
+    card.classList.add("card");
+    card.setAttribute("draggable", "true");
 
-function showSnake() {
-    snake.forEach(function (elem) {
-        blocks[`${elem.r},${elem.c}`].classList.add("fill");
+    // card top
+    let cardTopDets = document.createElement("div");
+    let priority = document.createElement("div");
+    let creationTime = document.createElement("div");
+    let timeIcon = document.createElement("i");
+    let timeSpan = document.createElement("span");
+
+    cardTopDets.classList.add("card-top-dets");
+
+    priority.classList.add("priority");
+    priority.textContent = taskDets.taskPriority;
+
+    taskPriorityChng(taskDets.taskPriority, priority);
+
+    timeIcon.classList.add("ri-time-line");
+    timeSpan.textContent = taskDets.time;
+
+    creationTime.classList.add("creation-time");
+    creationTime.appendChild(timeIcon);
+    creationTime.appendChild(timeSpan);
+
+    cardTopDets.appendChild(priority);
+    cardTopDets.appendChild(creationTime);
+
+    // card middle
+    let workDets = document.createElement("div");
+    let workName = document.createElement("div");
+    let workDesc = document.createElement("div");
+    let p = document.createElement("p");
+
+    p.textContent = taskDets.taskDesc;
+    workDets.classList.add("work-dets");
+    workName.classList.add("work-name");
+    workName.textContent = taskDets.taskTitle;
+    workDesc.classList.add("work-desc");
+
+    workDesc.appendChild(p);
+    workDets.appendChild(workName);
+    workDets.appendChild(workDesc);
+
+    // card bottom
+    let cardBottom = document.createElement("div");
+    let editBtn = document.createElement("div");
+    let pencilIcon = document.createElement("i");
+    let editSpan = document.createElement("span");
+    let deleteBtn = document.createElement("div");
+    let binIcon = document.createElement("i");
+
+    cardBottom.classList.add("card-bottom-dets");
+    editBtn.classList.add("card-opt", "edit-btn");
+    pencilIcon.classList.add("ri-pencil-line");
+    editSpan.textContent = "Edit";
+    deleteBtn.classList.add("card-opt", "delete");
+    binIcon.classList.add("ri-delete-bin-line");
+    editBtn.appendChild(pencilIcon);
+    editBtn.appendChild(editSpan);
+
+    deleteBtn.appendChild(binIcon);
+
+    cardBottom.appendChild(editBtn);
+    cardBottom.appendChild(deleteBtn);
+
+    card.appendChild(cardTopDets);
+    card.appendChild(workDets);
+    card.appendChild(cardBottom);
+
+    return card;
+}
+function NewTask(taskDets,boardName="#todo") {
+    let card = createTask(taskDets);
+
+    select(`${boardName} .cards`).appendChild(card);
+    modal.style.display = "none";
+
+    card.addEventListener("dragstart", function (dets) {
+        dragedElement = dets.target;
+        lstBoard = dets.target.closest(".board");
     })
+    card.querySelector(".delete")
+        .addEventListener("click", function () {
+            card.remove();
+            taskCountChng();
+            saveTasks();
+        })
+    card.querySelector(".edit-btn")
+        .addEventListener("click", function () {
+            editTaskDets(card);
+        })
+    saveTasks();
 }
+createTaskBtn.addEventListener("click", function (dets) {
+    let taskDetsObj = {};
+    const taskTitle = select("#task-title").value;
+    const taskDesc = select("#task-desc").value;
+    const taskPriority = select("#task-priority").value;
 
-function showFood() {
-    const food = { r: Math.floor(Math.random() * rows), c: Math.floor(Math.random() * cols) };
-    blocks[`${food.r},${food.c}`].classList.add("foodColor");
-    return food;
-}
-function eatFood(head) {
-    if (head.c === foodCordinates.c && head.r === foodCordinates.r) {
-        blocks[`${foodCordinates.r},${foodCordinates.c}`].classList.remove("foodColor");
-        foodCordinates = showFood();
-        snakeGrow();
-        increaseScore();
-    }
-}
-function increaseScore() {
-    score += 10;
-    scrElem.textContent = score;
-}
-function snakeGrow() {
-    if (Number(snkLength.textContent) < 12) {
-        let tail = snake[0];
-        snake.unshift({ r: tail.r, c: tail.c });
-        snkLength.textContent = Number(snkLength.textContent) + 1
-    }
+    taskDetsObj["taskTitle"] = taskTitle;
+    taskDetsObj["taskDesc"] = taskDesc;
+    taskDetsObj["taskPriority"] = taskPriority;
+    taskDetsObj["time"] = "12 days ago";
+    NewTask(taskDetsObj);
 
-}
-
-function Out(head) {
-    if ((head.r < 0 || head.r >= rows) || (head.c < 0 || head.c >= cols)) {
-        isOut = true;
-    }
-}
-
-function selfCollison(head) {
-    for (let i = 0; i < snake.length - 1; i++) {
-        let snakeBody = snake[i];
-        if (snakeBody.r === head.r && snakeBody.c === head.c) {
-            isOut = true;
-            break;
-        }
-    }
-}
-
-function outScreen() {
-    gameBoard.innerHTML = "";
-    const div = document.createElement("div");
-    const btn = document.createElement("button");
-    btn.innerText = "Restart";
-    div.classList.add("outScreen");
-    div.style.opacity = 1;
-    div.textContent = `Nope,Out!`;
-    div.appendChild(btn);
-    gameBoard.appendChild(div);
-    document.querySelector("button").addEventListener("click", function () {
-        window.location.reload();
-    })
-}
-
-let Int = setInterval(function () {
-    let head = snake[snake.length - 1];
-
-    snake.forEach(function (elem) {
-        blocks[`${elem.r},${elem.c}`].classList.remove("fill");
-    })
-    if (direction === "left") {
-        snake.push({ r: head.r, c: head.c - 1 });
-        head = snake[snake.length - 1];
-        Out(head);
-        selfCollison(head);
-        eatFood(head);
-    } else if (direction === "right") {
-        snake.push({ r: head.r, c: head.c + 1 });
-        head = snake[snake.length - 1];
-        Out(head);
-        selfCollison(head);
-        eatFood(head);
-    } else if (direction === "down") {
-        snake.push({ r: head.r + 1, c: head.c });
-        head = snake[snake.length - 1];
-        Out(head);
-        selfCollison(head);
-        eatFood(head);
-    } else if (direction === "up") {
-        snake.push({ r: head.r - 1, c: head.c });
-        head = snake[snake.length - 1];
-        Out(head);
-        selfCollison(head);
-        eatFood(head);
-    }
-
-    if (!isOut) {
-        snake.shift();
-        showSnake();
-    } else {
-        outScreen();
-        clearInterval(Int);
-    }
-}, 300)
-
-let dispatcher = {
-    "ArrowUp": function () { direction = direction !== "down" ? "up" : direction },
-    "ArrowDown": function () { direction = direction !== "up" ? "down" : direction },
-    "ArrowLeft": function () { direction = direction !== "right" ? "left" : direction },
-    "ArrowRight": function () { direction = direction !== "left" ? "right" : direction },
-}
-document.addEventListener("keydown", function (dets) {
-    if (dispatcher.hasOwnProperty(dets.code)) {
-        dispatcher[dets.code]();
-    }
+    currentBoard = boards[0];
+    taskCountChng();
 })
 
+function taskCountChng() {
+    let currCount = currentBoard.querySelector(`.cards`).children.length;
+    let lastCount = lstBoard.querySelector(`.cards`).children.length;
 
-foodCordinates = showFood();
+    document.querySelector(`#${currentBoard.id} .no-of-cards`).textContent = currCount;
+    document.querySelector(`#${lstBoard.id} .no-of-cards`).textContent = lastCount;
+}
+
+function editTaskDets(card) {
+    modalSec.style.display = "flex";
+    select("#task-title-chng").value = card.querySelector(".work-name").textContent;
+    select("#task-desc-chng").value = card.querySelector(".work-desc p").textContent;
+    select("#task-priority-chng").value = card.querySelector(".priority").textContent;
+
+    select("#change-task-dets").onclick = function () {
+        card.querySelector(".work-name").textContent = select("#task-title-chng").value;
+        card.querySelector(".work-desc p").textContent = select("#task-desc-chng").value;
+        card.querySelector(".priority").textContent = select("#task-priority-chng").value;
+        taskPriorityChng(card.querySelector(".priority").textContent, card.querySelector(".priority"));
+        modalSec.style.display = "none";
+        saveTasks();
+    };
+}
+
+searchBox.addEventListener("input", function (dets) {
+    const allCards = document.querySelectorAll(".card");
+    allCards.forEach(function (card) {
+        if (searchBox.value === "") {
+            return;
+        } else {
+            if (card.querySelector(".work-name").textContent.toLowerCase().startsWith(searchBox.value)) {
+                card.classList.add("high-light");
+            }
+        }
+    })
+})
+
+searchBox.addEventListener("blur", function () {
+    document.querySelectorAll(".card")
+        .forEach(function (card) {
+            if (card.classList[1]) {
+                card.classList.remove("high-light")
+            }
+        })
+})
+
+function saveTasks() {
+    boards.forEach(function (board) {
+        const allCards = board.querySelectorAll(".card");
+
+        allTaskData[board.id] = Array.from(allCards).map(function (c) {
+            return {
+                taskTitle: c.querySelector(".work-name").textContent,
+                taskDesc: c.querySelector(".work-desc").textContent,
+                taskPriority: c.querySelector(".priority").textContent,
+                time:"12 days ago"
+            }
+        })
+    })
+    localStorage.setItem("tasks", JSON.stringify(allTaskData));
+}
+
+dragEventOnBoards(boards[0]);
+dragEventOnBoards(boards[1]);
+dragEventOnBoards(boards[2]);
+dragEventOnBoards(boards[3]);
+
+toggleCreateNewTaskBtn();
+taskCountChng();

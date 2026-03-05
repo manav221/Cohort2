@@ -1,112 +1,417 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    color: white;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-html,body{
+html,
+body {
     width: 100%;
     height: 100%;
 }
 
-body{
-    background-color: black;
+:root {
+    --high: rgba(209, 47, 47, 0.558);
+    --low: rgba(78, 194, 78, 0.558);
+    --medium: rgba(248, 248, 32, 0.558);
+    --bg-color:rgba(86, 86, 86, 0.303);
+    --boardbgc: #cdcdcd6a;
+    --txt-default-color:rgb(23, 23, 23);
+    --high-txt-color: rgb(126, 0, 0);
+    --low-txt-color: rgb(0, 126, 0);
+    --medium-txt-color: rgb(126, 126, 0);
+    --s-xl: 0.3rem;
+    --sml: 0.5rem;
+    --med: 1.2rem;
+    --xl: 1.5rem;
+    --xxl: 2rem;
+    --default: 1rem;
+    --txt-s-xl: 0.8rem;
+    --txtsml: 0.9rem;
+    --txtmed: 1.1rem;
+    --txtxl: 1.5rem;
+    --txtxxl: 1.8rem;
 }
 
-main{
+main {
     height: 100%;
     width: 100%;
     position: relative;
-    padding: 1rem;
+    padding: var(--med);
+    padding-top: 0;
+    overflow:hidden;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
 }
 
-main .game-details-bar{
-    width: 100%;
-    padding: 2rem;
-    display: flex;   
+main header{
+    display: flex;
     align-items: center;
-    justify-content: space-around;
-    background-color: #f9f5f5da;
-    border-radius: 0.5rem;
+    justify-content: space-between;
+    padding: var(--sml);
 }
 
-.game-details-bar .snk-dets{
-    font-size: 1.2rem;
-    font-weight: 500;
-    color: black;
+header .search-box input{
+    outline: none;
+    border: none;
+    margin-left: var(--sml);
+    background-color: transparent;
+}
+input::placeholder{
+    font-size: var(--txtmed);
+    font-weight: 400;
 }
 
-.game-details-bar .snk-dets .dets{
-    color: black;
-}
-
-main .game-board{
-    flex-grow: 1;
-    background-color: crimson;
-    border-radius: 0.5rem;
-    padding: 1rem;
-}
-
-
-.all-blocks{
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(40px,1fr));
-    grid-template-rows: repeat(auto-fill,minmax(40px,1fr));
-}
-
-
-.block{
-    border: 1px solid black;
-    font-size: 0.5rem;
-}
-
-.fill{
-    background-color: rgb(247, 247, 65);
-}
-
-.foodColor{
-    background-color: purple;
-}
-
-.outScreen{
-    width: 20rem;
-    height: 10rem;
+header .header-options{
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    border-radius: 0.5rem;
-    background-color: #fffdfd;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%) scale(1.5);
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: black;
-    opacity: 0;
+    gap: var(--med);
 }
 
-.outScreen button{
-    color: black;
-    font-size: 1rem;
-    font-weight: 500;
-    outline: none;
-    border: 1px solid black;
-    border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
+.header-options .new-task{
+    padding: var(--sml);
+    background-color: var(--boardbgc);
+    border-radius: var(--s-xl);
+    text-align: start;
     cursor: pointer;
-    transition: all linear 0.2s;
+    transition: all ease 0.2s;
+}
+.new-task span{
+    font-size: var(--txtsml);
+    font-weight: 600;
+}
+.new-task i{
+    font-weight: 600;
+}
+.new-task:active{
+    transform: scale(0.95);
 }
 
+.header-options .sort{
+    padding: var(--sml);
+    padding-inline: var(--default);
+    border-radius: var(--s-xl);
+    background-color: var(--boardbgc);
+    cursor: pointer;
+    transition: all ease 0.2s;
+}
+.sort i{
+    font-size: var(--txtmed);
+    font-weight: 600;
+}
+.sort:active{
+    transform: scale(0.95);
+}
+
+
+main .boards {
+    width: 100%;
+    height: 100%;
+    padding: var(--sml);
+    display: flex;
+    align-items: center;
+    gap: var(--med);
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+.boards::-webkit-scrollbar{
+    display: none;
+}
+.boards .board {
+    flex-shrink: 0;
+    flex-grow: 1;
+    width: min(22rem, 80%);
+    height: 100%;
+    padding: var(--default);
+    border-radius: var(--sml);
+    background-color: var(--boardbgc);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sml);
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    transition: all ease 0.3s;
+}
+
+.board .board-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.board-header .board-name {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--sml);
+}
+
+.board-name h3 {
+    font-weight: 600;
+}
+
+.board-name .no-of-cards {
+    position: relative;
+    top: 1px;
+    font-size: var(--txtmed);
+    font-weight: 600;
+    color: rgb(109, 109, 109);
+}
+
+.board-header .board-options {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.board-options i {
+    padding: var(--sml);
+    border-radius: 50%;
+    text-align: center;
+    font-size: var(--med);
+    font-weight: 600;
+    transition: all ease 0.2s;
+}
+
+.board-options i:hover {
+    background-color: #6f6f6f48;
+}
+
+.board-options i:active {
+    transform: scale(0.95);
+}
+.board .cards{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sml);
+    padding-block: var(--med);
+    padding-top: 0;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
+.cards::-webkit-scrollbar{
+    display: none;
+}
+.board .card {
+    width: 100%;
+    max-height: 12.5rem;
+    background-color: #fff;
+    padding: var(--sml);
+    border-radius: var(--sml);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sml);
+    position: relative;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    cursor: grab;
+}
+
+.high-light{
+    animation: highlightAnimation 1.5s;
+    animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1);
+    animation-iteration-count: infinite;
+    animation-play-state: running;
+}
+
+.card .card-top-dets {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.card-top-dets .priority {
+    padding: var(--s-xl);
+    background-color: var(--bg-color);
+    color: var(--txt-default-color);
+    font-size: var(--txtsml);
+    border-radius: var(--s-xl);
+    font-weight: 500;
+}
+
+.card-top-dets .creation-time {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    font-size: var(--txtsml);
+    font-weight: 500;
+}
+.creation-time i{
+    position: relative;
+    top: 1px;
+}
+.card .work-dets {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-xl);
+}
+
+.work-dets .work-name {
+    font-weight: 700;
+}
+
+.work-dets .work-desc {
+    width: 100%;
+    max-height: 8ch;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card .card-bottom-dets {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sml);
+}
+
+.card-bottom-dets .edit-btn {
+    padding-inline: var(--sml);
+    padding-block: var(--s-xl);
+    border-radius: 999px;
+    text-align: center;
+    transition: all linear 0.2s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+.card-bottom-dets .delete i{
+    font-size: var(--txtmed);
+    padding: var(--sml);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all ease 0.2s;
+}
+
+.edit-btn i {
+    position: relative;
+    bottom: 1px;
+}
+.edit-btn span {
+    position: relative;
+    bottom: 1px;
+    font-size: var(--txtsml);
+    font-weight: 500;
+}
+.edit-btn:hover {
+    background-color: rgba(193, 193, 193, 0.295);
+}
+.delete:hover i{
+    background-color: rgba(193, 193, 193, 0.295);
+}
+
+.card .card-opt:active{
+    transform: scale(0.95);
+}
+
+.hover-over{
+    border: 2px dashed black;
+    transform: scale(1.02);
+}
+
+.priority-low{
+    background-color: var(--low) !important;
+    color: var(--low-txt-color) !important;
+}
+.priority-medium{
+    background-color: var(--medium) !important;
+    color: var(--medium-txt-color) !important;
+}
+.priority-high{
+    background-color: var(--high) !important;
+    color: var(--high-txt-color) !important;
+}
+
+.padding-borR{
+    padding: var(--sml);
+    border-radius: var(--sml);
+}
+
+.modal-props{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.new-card-dets{
+    display: flex;
+    flex-direction: column;
+    gap: var(--sml);
+    position: relative;
+    z-index: 3;
+    background-color: rgba(19, 19, 19, 0.411);
+    padding: var(--med);
+    padding-inline: var(--xxl);
+    border-radius: var(--sml);
+}
+
+.task-title::placeholder,#task-desc::placeholder{
+    font-size: var(--txtsml);
+    font-weight: 500;
+}
+.task-priority{
+    font-weight: 600;
+}
+
+.new-card-dets button{
+    border: 2px dashed rgb(255, 166, 0);
+    background-color: transparent;
+    color: black;
+    border-radius: var(--sml);
+    padding: var(--sml);
+    font-size: var(--txtmed);
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: var(--med);
+    align-self: center;
+    transition: all 0.2s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}
+button:hover{
+    background-color: rgba(255, 255, 255, 0.073);
+}
 button:active{
     transform: scale(0.95);
+}
+
+textarea,input,select{
+    border: none;
+    outline: none;
+}
+
+.overlay{
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(44, 44, 44, 0.404);
+    backdrop-filter: blur(var(--s-xl));
+}
+
+@keyframes highlightAnimation {
+    from{
+        background-color: white;
+    }
+    to{
+        background-color: rgba(255, 217, 0, 0.136);
+    }
 }

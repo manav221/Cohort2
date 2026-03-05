@@ -11,17 +11,119 @@
 
 <body>
     <main>
-        <div class="game-details-bar">
-            <div class="snk-dets snake-length">
-                Snake Length: <span class="dets">3</span>
+        <header>
+            <div class="search-box">
+                <i class="ri-search-line"></i>
+                <input type="search" placeholder="search" id="search-box">
             </div>
-            <div class="snk-dets score">
-                Score: <span class="dets">0</span>
+            <div class="header-options">
+                <div class="new-task">
+                    <i class="ri-add-line"></i>
+                    <span>New Task</span>
+                </div>
+                <div class="sort">
+                    <i class="ri-filter-3-line"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="boards">
+            <div data-boardNo="1" class="board" id="todo">
+                <div class="board-header">
+                    <div class="board-name">
+                        <h3>To Do</h3>
+                        <div class="no-of-cards">0</div>
+                    </div>
+                    <div class="board-options">
+                        <i class="ri-add-line new-task"></i>
+                        <i class="ri-more-2-line"></i>
+                    </div>
+                </div>
+
+                <div class="cards">
+                </div>
+            </div>
+            <div data-boardNo="2" class="board" id="In-progress">
+                <div class="board-header">
+                    <div class="board-name">
+                        <h3>In Progess</h3>
+                        <div class="no-of-cards">0</div>
+                    </div>
+                    <div class="board-options">
+                        <i class="ri-add-line new-task"></i>
+                        <i class="ri-more-2-line"></i>
+                    </div>
+                </div>
+
+                <div class="cards">
+                </div>
+            </div>
+            <div data-boardNo="3" class="board" id="Review">
+                <div class="board-header">
+                    <div class="board-name">
+                        <h3>Review</h3>
+                        <div class="no-of-cards">0</div>
+                    </div>
+                    <div class="board-options">
+                        <i class="ri-add-line new-task"></i>
+                        <i class="ri-more-2-line"></i>
+                    </div>
+                </div>
+
+                <div class="cards">
+                </div>
+            </div>
+            <div data-boardNo="4" class="board" id="Done">
+                <div class="board-header">
+                    <div class="board-name">
+                        <h3>Done</h3>
+                        <div class="no-of-cards">0</div>
+                    </div>
+                    <div class="board-options">
+                        <i class="ri-add-line new-task"></i>
+                        <i class="ri-more-2-line"></i>
+                    </div>
+                </div>
+
+                <div class="cards">
+                </div>
             </div>
         </div>
-        <div class="game-board">
-            <div class="all-blocks"></div>
-         </div>
+
+        <div class="modal modal-props">
+            <div class="overlay"></div>
+            <div class="new-card-dets">
+                <input id="task-title" type="text" placeholder="Title" class="padding-borR task-title">
+                <textarea name="task-desc" class="padding-borR" id="task-desc"
+                    placeholder="Task Description"></textarea>
+                <select name="task-priority" id="task-priority" class="padding-borR task-priority">
+                    <option value="Undefined">Undefined</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+
+                <button id="create-task">Create</button>
+            </div>
+        </div>
+        <div class="modal-2 modal-props">
+            <div class="overlay"></div>
+            <div class="new-card-dets">
+                <input id="task-title-chng" type="text" placeholder="Title" class="padding-borR task-title">
+
+                <textarea name="task-desc-chng" class="padding-borR" id="task-desc-chng"
+                    placeholder="Task Description"></textarea>
+
+                <select name="task-priority-chng" id="task-priority-chng" class="padding-borR task-priority">
+                    <option value="Undefined">Undefined</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+
+                <button id="change-task-dets">Change</button>
+            </div>
+        </div>
     </main>
 
     <script src="script.js"></script>
