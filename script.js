@@ -1,276 +1,290 @@
-const boards = document.querySelectorAll(".board");
-const cards = document.querySelectorAll(".card");
-const modal = select(".modal");
-const modalSec = select(".modal-2");
-const addTaskBtn = select(".new-task");
-const modalOverlay = document.querySelectorAll(".overlay");
-const createTaskBtn = select("#create-task");
-const searchBox = select("#search-box");
-let dragedElement = null;
-let lstBoard = boards[0];
-let currentBoard = boards[0];
-let allTaskData = {};
+const filters = {
 
-
-if (localStorage.getItem("tasks")) {
-    let data = JSON.parse(localStorage.getItem("tasks"));
-    for(let board in data){
-        let b = document.querySelector(`#${board}`);
-        data[board].forEach(function(c){
-            NewTask(c,`#${board}`);
-            currentBoard = b;
-            taskCountChng();
-        })
+    temperature: {
+        value: 0
+    },
+    tint: {
+        value: 0
+    },
+    brightness: {
+        value: 0
+    },
+    contrast: {
+        value: 0
+    },
+    highlights: {
+        value: 0
+    },
+    shadows: {
+        value: 0
+    },
+    whites: {
+        value: 0
+    },
+    blacks: {
+        value: 0
     }
 }
+const sliders = {
+    temperature: select(".temperature input"),
+    tint: select(".tint input"),
+    contrast: select(".contrast input"),
+    brightness: select(".brightness input"),
+    shadows: select(".shadows input"),
+    highlights: select(".highlights input"),
+    whites: select(".whites input"),
+    blacks: select(".blacks input")
+}
+const Presets = {
+    vintage: {
+        name: "Vintage",
+        temperature: 18,
+        tint: 6,
+        brightness: 6,
+        contrast: -10,
+        highlights: -20,
+        shadows: 18,
+        whites: -10,
+        blacks: 12,
+    },
+    oldSchool: {
+        name: "Old School",
+        temperature: 12,
+        tint: -5,
+        brightness: 4,
+        contrast: 15,
+        highlights: -10,
+        shadows: 10,
+        whites: 5,
+        blacks: 5,
+    },
+    darkMoody: {
+        name: "Dark Moody",
+        temperature: -5,
+        tint: -2,
+        brightness: -12,
+        contrast: 20,
+        highlights: -12,
+        shadows: -8,
+        whites: -10,
+        blacks: -15,
+    },
+    warm: {
+        name: "Warm Sunset",
+        temperature: 25,
+        tint: 8,
+        brightness: 8,
+        contrast: 10,
+        highlights: 6,
+        shadows: 5,
+        whites: 10,
+        blacks: -4,
+    },
+    brightNClean: {
+        name: "Bright N Clean",
+        temperature: 5,
+        tint: 2,
+        brightness: 20,
+        contrast: 8,
+        highlights: 5,
+        shadows: 10,
+        whites: 12,
+        blacks: -5,
+    }
+}
+const canvas = select("canvas");
+const canvasCTX = canvas.getContext("2d");
+const imgInp = select(".add-photo-btn input");
+const allAdjustments = document.querySelectorAll(".adjust");
+const moreOption = select(".more-options");
+const options = select(".options");
+let originalImageData;
 
+// user can select and open an image.
+const img = new Image();
+imgInp.addEventListener("change", function () {
+    img.src = URL.createObjectURL(imgInp.files[0]);
+    img.onload = function () {
+        canvas.width = img.width;
+        canvas.height = img.height;
+        canvasCTX.drawImage(img, 0, 0);
+        originalImageData = canvasCTX.getImageData(0, 0, canvas.width, canvas.height);
+    }
+})
+
+// utilities function
 function select(elem) {
     return document.querySelector(elem);
 }
-
-function dragEventOnBoards(board) {
-    board.addEventListener("dragenter", function (dets) {
-        dets.preventDefault();
-        board.classList.add("hover-over");
-    })
-
-    board.addEventListener("dragleave", function (dets) {
-        dets.preventDefault();
-        board.classList.remove("hover-over");
-    })
-
-    board.addEventListener("dragover", function (dets) {
-        dets.preventDefault();
-        board.classList.add("hover-over");
-    })
-
-    board.addEventListener("drop", function (dets) {
-        dets.preventDefault();
-        board.children[1].appendChild(dragedElement);
-        board.classList.remove("hover-over");
-        currentBoard = board;
-        taskCountChng();
-        saveTasks();
-    })
+function clamp(value) {
+    return Math.max(0, Math.min(255, value));
 }
 
-function toggleCreateNewTaskBtn() {
-    addTaskBtn.addEventListener("click", function () {
-        select("#task-title").value = "";
-        select("#task-desc").value = "";
-        modal.style.display = "flex";
-    })
-
-    modalOverlay.forEach(function (overlay) {
-        overlay.addEventListener("click", function () {
-            overlay.parentElement.style.display = "none";
+// handle sliders when user move them;
+function handleSliders() {
+    for (const slider in sliders) {
+        let adjustment = sliders[slider];
+        adjustment.addEventListener("input", function (dets) {
+            filters[slider].value = Number(dets.target.value);
+            applyFilters();
         })
-    })
+    }
+}
 
-    document.querySelectorAll(".new-task")
-        .forEach((btn) => {
-            btn.addEventListener("click", function () {
-                addTaskBtn.click();
+// when user move silder then that adjustment will apply on image.
+function applyFilters() {
+    const temperature = filters.temperature.value;
+    const tint = filters.tint.value;
+    const bright = filters.brightness.value;
+    const contrast = filters.contrast.value;
+    const highlights = filters.highlights.value;
+    const shadows = filters.shadows.value;
+    const whites = filters.whites.value;
+    const blacks = filters.blacks.value;
+    let factor = (259 * (contrast + 255)) / (255 * (259 - contrast));
+
+    let imgData = new ImageData(
+        new Uint8ClampedArray(originalImageData.data),
+        originalImageData.width,
+        originalImageData.height
+    );
+
+    let data = imgData.data;
+    for (let i = 0; i < data.length; i += 4) {
+
+        let r = data[i];
+        let g = data[i + 1];
+        let b = data[i + 2];
+
+        // brightness
+        r += bright;
+        g += bright;
+        b += bright;
+
+        // contrast
+        r = factor * (r - 128) + 128;
+        g = factor * (g - 128) + 128;
+        b = factor * (b - 128) + 128;
+
+        let brightness = 0.299 * r + 0.587 * g + 0.114 * b;
+
+        // highlights
+        if (brightness > 180) {
+            r += highlights;
+            g += highlights;
+            b += highlights;
+        }
+
+        // shadows
+        if (brightness < 80) {
+            r += shadows;
+            g += shadows;
+            b += shadows;
+        }
+
+        // whites
+        if (brightness > 220) {
+            r += whites;
+            g += whites;
+            b += whites;
+        }
+
+        // blacks
+        if (brightness < 40) {
+            r -= blacks;
+            g -= blacks;
+            b -= blacks;
+        }
+
+        // temperature
+        r += temperature;
+        g += temperature * 0.3;
+        b -= temperature;
+
+        // tint
+        r += tint;
+        g -= tint;
+        b += tint;
+
+        data[i] = clamp(r);
+        data[i + 1] = clamp(g);
+        data[i + 2] = clamp(b);
+    }
+    canvasCTX.putImageData(imgData, 0, 0);
+}
+
+// user can reset any adjustment to 0 if they don't want it.
+function resetFilters(isclicked = false) {
+    allAdjustments.forEach(function (adjustment) {
+        adjustment.querySelector("span")
+            .addEventListener("click", function () {
+                sliders[adjustment.classList[0]].value = 0;
+                filters[adjustment.classList[0]].value = 0;
+                applyFilters();
             })
-
-        })
-}
-
-function taskPriorityChng(priority, priorityElem) {
-    const priorities = {
-        "Low": function (elem) {
-            elem.classList.add("priority-low");
-        },
-        "Medium": function (elem) {
-            elem.classList.add("priority-medium");
-        },
-        "High": function (elem) {
-            elem.classList.add("priority-high");
-        }
-    }
-
-    if (priorities[priority]) {
-        priorities[priority](priorityElem)
-    }
-}
-
-function createTask(taskDets) {
-    let card = document.createElement("div");
-    card.classList.add("card");
-    card.setAttribute("draggable", "true");
-
-    // card top
-    let cardTopDets = document.createElement("div");
-    let priority = document.createElement("div");
-    let creationTime = document.createElement("div");
-    let timeIcon = document.createElement("i");
-    let timeSpan = document.createElement("span");
-
-    cardTopDets.classList.add("card-top-dets");
-
-    priority.classList.add("priority");
-    priority.textContent = taskDets.taskPriority;
-
-    taskPriorityChng(taskDets.taskPriority, priority);
-
-    timeIcon.classList.add("ri-time-line");
-    timeSpan.textContent = taskDets.time;
-
-    creationTime.classList.add("creation-time");
-    creationTime.appendChild(timeIcon);
-    creationTime.appendChild(timeSpan);
-
-    cardTopDets.appendChild(priority);
-    cardTopDets.appendChild(creationTime);
-
-    // card middle
-    let workDets = document.createElement("div");
-    let workName = document.createElement("div");
-    let workDesc = document.createElement("div");
-    let p = document.createElement("p");
-
-    p.textContent = taskDets.taskDesc;
-    workDets.classList.add("work-dets");
-    workName.classList.add("work-name");
-    workName.textContent = taskDets.taskTitle;
-    workDesc.classList.add("work-desc");
-
-    workDesc.appendChild(p);
-    workDets.appendChild(workName);
-    workDets.appendChild(workDesc);
-
-    // card bottom
-    let cardBottom = document.createElement("div");
-    let editBtn = document.createElement("div");
-    let pencilIcon = document.createElement("i");
-    let editSpan = document.createElement("span");
-    let deleteBtn = document.createElement("div");
-    let binIcon = document.createElement("i");
-
-    cardBottom.classList.add("card-bottom-dets");
-    editBtn.classList.add("card-opt", "edit-btn");
-    pencilIcon.classList.add("ri-pencil-line");
-    editSpan.textContent = "Edit";
-    deleteBtn.classList.add("card-opt", "delete");
-    binIcon.classList.add("ri-delete-bin-line");
-    editBtn.appendChild(pencilIcon);
-    editBtn.appendChild(editSpan);
-
-    deleteBtn.appendChild(binIcon);
-
-    cardBottom.appendChild(editBtn);
-    cardBottom.appendChild(deleteBtn);
-
-    card.appendChild(cardTopDets);
-    card.appendChild(workDets);
-    card.appendChild(cardBottom);
-
-    return card;
-}
-function NewTask(taskDets,boardName="#todo") {
-    let card = createTask(taskDets);
-
-    select(`${boardName} .cards`).appendChild(card);
-    modal.style.display = "none";
-
-    card.addEventListener("dragstart", function (dets) {
-        dragedElement = dets.target;
-        lstBoard = dets.target.closest(".board");
-    })
-    card.querySelector(".delete")
-        .addEventListener("click", function () {
-            card.remove();
-            taskCountChng();
-            saveTasks();
-        })
-    card.querySelector(".edit-btn")
-        .addEventListener("click", function () {
-            editTaskDets(card);
-        })
-    saveTasks();
-}
-createTaskBtn.addEventListener("click", function (dets) {
-    let taskDetsObj = {};
-    const taskTitle = select("#task-title").value;
-    const taskDesc = select("#task-desc").value;
-    const taskPriority = select("#task-priority").value;
-
-    taskDetsObj["taskTitle"] = taskTitle;
-    taskDetsObj["taskDesc"] = taskDesc;
-    taskDetsObj["taskPriority"] = taskPriority;
-    taskDetsObj["time"] = "12 days ago";
-    NewTask(taskDetsObj);
-
-    currentBoard = boards[0];
-    taskCountChng();
-})
-
-function taskCountChng() {
-    let currCount = currentBoard.querySelector(`.cards`).children.length;
-    let lastCount = lstBoard.querySelector(`.cards`).children.length;
-
-    document.querySelector(`#${currentBoard.id} .no-of-cards`).textContent = currCount;
-    document.querySelector(`#${lstBoard.id} .no-of-cards`).textContent = lastCount;
-}
-
-function editTaskDets(card) {
-    modalSec.style.display = "flex";
-    select("#task-title-chng").value = card.querySelector(".work-name").textContent;
-    select("#task-desc-chng").value = card.querySelector(".work-desc p").textContent;
-    select("#task-priority-chng").value = card.querySelector(".priority").textContent;
-
-    select("#change-task-dets").onclick = function () {
-        card.querySelector(".work-name").textContent = select("#task-title-chng").value;
-        card.querySelector(".work-desc p").textContent = select("#task-desc-chng").value;
-        card.querySelector(".priority").textContent = select("#task-priority-chng").value;
-        taskPriorityChng(card.querySelector(".priority").textContent, card.querySelector(".priority"));
-        modalSec.style.display = "none";
-        saveTasks();
-    };
-}
-
-searchBox.addEventListener("input", function (dets) {
-    const allCards = document.querySelectorAll(".card");
-    allCards.forEach(function (card) {
-        if (searchBox.value === "") {
-            return;
-        } else {
-            if (card.querySelector(".work-name").textContent.toLowerCase().startsWith(searchBox.value)) {
-                card.classList.add("high-light");
-            }
+        if (isclicked) {
+            adjustment.querySelector("span").click();
         }
     })
-})
-
-searchBox.addEventListener("blur", function () {
-    document.querySelectorAll(".card")
-        .forEach(function (card) {
-            if (card.classList[1]) {
-                card.classList.remove("high-light")
-            }
-        })
-})
-
-function saveTasks() {
-    boards.forEach(function (board) {
-        const allCards = board.querySelectorAll(".card");
-
-        allTaskData[board.id] = Array.from(allCards).map(function (c) {
-            return {
-                taskTitle: c.querySelector(".work-name").textContent,
-                taskDesc: c.querySelector(".work-desc").textContent,
-                taskPriority: c.querySelector(".priority").textContent,
-                time:"12 days ago"
-            }
-        })
-    })
-    localStorage.setItem("tasks", JSON.stringify(allTaskData));
 }
 
-dragEventOnBoards(boards[0]);
-dragEventOnBoards(boards[1]);
-dragEventOnBoards(boards[2]);
-dragEventOnBoards(boards[3]);
+// give some predefined combination of adjustment.
+function presets() {
+    const allPresets = document.querySelector(".all-presets");
+    for (const [key, value] of Object.entries(Presets)) {
+        const div = document.createElement("div");
+        const span = document.createElement("span");
+        div.classList.add(`${key}`, "preset");
+        span.innerText = value.name;
+        div.appendChild(span);
+        allPresets.appendChild(div);
+    }
 
-toggleCreateNewTaskBtn();
-taskCountChng();
+    allPresets.addEventListener("click", function (dets) {
+        document.querySelectorAll(".preset").forEach(function (p) {
+            p.classList.remove("active");
+        })
+
+        let presetElem = dets.target.closest(".preset");
+        if (!presetElem) return;
+
+        presetElem.classList.add("active");
+        let preset = Presets[presetElem.classList[0]];
+        for (const key in preset) {
+            if (key !== "name") {
+                filters[key].value = preset[key];
+                sliders[key].value = preset[key];
+            }
+        }
+        applyFilters();
+    })
+}
+
+// user can reset all and download
+moreOption.addEventListener("click", function (dets) {
+    dets.stopPropagation();
+    options.classList.toggle("hidden");
+})
+options.addEventListener("click", function (dets) {
+    let navBtn = dets.target.classList[0];
+    if (navBtn === "download-btn") {
+        let link = document.createElement("a");
+        link.download = "edited-photo.png";
+        link.href = canvas.toDataURL("picture/png");
+
+        link.click();
+
+    } else {
+        resetFilters(true);
+        document.querySelectorAll(".preset").forEach(function (p) {
+            p.classList.remove("active");
+        })
+    }
+})
+document.addEventListener("click", function () {
+    options.classList.add("hidden");
+})
+
+presets();
+handleSliders()
+resetFilters();

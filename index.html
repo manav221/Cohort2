@@ -11,119 +11,83 @@
 
 <body>
     <main>
-        <header>
-            <div class="search-box">
-                <i class="ri-search-line"></i>
-                <input type="search" placeholder="search" id="search-box">
+        <nav>
+            <div class="add-photo-btn">
+                <label for="fileInput">
+                    <i class="ri-image-add-line"></i>
+                    <span>Add Photo</span>
+                </label>
+                <input type="file" accept=".png,.jpg" id="fileInput" class="hidden">
             </div>
-            <div class="header-options">
-                <div class="new-task">
-                    <i class="ri-add-line"></i>
-                    <span>New Task</span>
-                </div>
-                <div class="sort">
-                    <i class="ri-filter-3-line"></i>
-                </div>
-            </div>
-        </header>
-
-        <div class="boards">
-            <div data-boardNo="1" class="board" id="todo">
-                <div class="board-header">
-                    <div class="board-name">
-                        <h3>To Do</h3>
-                        <div class="no-of-cards">0</div>
+            <div class="more-options">
+                <i class="ri-more-2-line more-icon"></i>
+                <div class="options hidden">
+                    <div class="download-btn nav-btn">
+                        <i class="ri-download-line download-btn"></i>
+                        <span class="download-btn">Download</span>
                     </div>
-                    <div class="board-options">
-                        <i class="ri-add-line new-task"></i>
-                        <i class="ri-more-2-line"></i>
+                    <div class="reset-btn nav-btn">
+                        <i class="ri-reset-right-fill reset-btn"></i>
+                        <span class="reset-btn">Reset</span>
                     </div>
                 </div>
-
-                <div class="cards">
-                </div>
             </div>
-            <div data-boardNo="2" class="board" id="In-progress">
-                <div class="board-header">
-                    <div class="board-name">
-                        <h3>In Progess</h3>
-                        <div class="no-of-cards">0</div>
+        </nav>
+        <section class="view1">
+            <canvas class="img-container"></canvas>
+            
+            <div class="edit-adjust-options">
+                <div class="adjust-opt white-balance">
+                    <div class="adjust-icon">
+                        <i class="ri-lightbulb-line"></i>
+                        <span>White balance</span>
                     </div>
-                    <div class="board-options">
-                        <i class="ri-add-line new-task"></i>
-                        <i class="ri-more-2-line"></i>
+                    <div class="temperature adjust">
+                        <span>Temperature</span>
+                        <input type="range" name="" id="" min="-100" max="100" value="0">
                     </div>
-                </div>
-
-                <div class="cards">
-                </div>
-            </div>
-            <div data-boardNo="3" class="board" id="Review">
-                <div class="board-header">
-                    <div class="board-name">
-                        <h3>Review</h3>
-                        <div class="no-of-cards">0</div>
-                    </div>
-                    <div class="board-options">
-                        <i class="ri-add-line new-task"></i>
-                        <i class="ri-more-2-line"></i>
+                    <div class="tint adjust">
+                        <span>Tint</span>
+                        <input type="range" name="" id="" min="-100" max="100" value="0">
                     </div>
                 </div>
-
-                <div class="cards">
-                </div>
-            </div>
-            <div data-boardNo="4" class="board" id="Done">
-                <div class="board-header">
-                    <div class="board-name">
-                        <h3>Done</h3>
-                        <div class="no-of-cards">0</div>
+                <div class="adjust-opt light">
+                    <div class="adjust-icon">
+                        <i class="ri-sun-line"></i>
+                        <span>Light</span>
                     </div>
-                    <div class="board-options">
-                        <i class="ri-add-line new-task"></i>
-                        <i class="ri-more-2-line"></i>
+                    <div class="brightness adjust">
+                        <span>Brightness</span>
+                        <input type="range" name="" id="" min="-100" max="100" value="0">
+                    </div>
+                    <div class="contrast adjust">
+                        <span>Contrast</span>
+                        <input type="range" name="" id="" min="-100" max="100" value="0">
+                    </div>
+                    <div class="highlights adjust">
+                        <span>Highlights</span>
+                        <input type="range" name="" id="" min="-100" max="100" value="0">
+                    </div>
+                    <div class="shadows adjust">
+                        <span>Shadows</span>
+                        <input type="range" name="" id="" min="-100" max="100" value="0">
+                    </div>
+                    <div class="whites adjust">
+                        <span>Whites</span>
+                        <input type="range" name="" id="" min="-100" max="100" value="0">
+                    </div>
+                    <div class="blacks adjust">
+                        <span>Blacks</span>
+                        <input type="range" name="" id="" min="-100" max="100" value="0">
                     </div>
                 </div>
-
-                <div class="cards">
+                <div class="presets">
+                    <h3>Presets</h3>
+                    <div class="all-presets">
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="modal modal-props">
-            <div class="overlay"></div>
-            <div class="new-card-dets">
-                <input id="task-title" type="text" placeholder="Title" class="padding-borR task-title">
-                <textarea name="task-desc" class="padding-borR" id="task-desc"
-                    placeholder="Task Description"></textarea>
-                <select name="task-priority" id="task-priority" class="padding-borR task-priority">
-                    <option value="Undefined">Undefined</option>
-                    <option value="Low">Low</option>
-                    <option value="Medium">Medium</option>
-                    <option value="High">High</option>
-                </select>
-
-                <button id="create-task">Create</button>
-            </div>
-        </div>
-        <div class="modal-2 modal-props">
-            <div class="overlay"></div>
-            <div class="new-card-dets">
-                <input id="task-title-chng" type="text" placeholder="Title" class="padding-borR task-title">
-
-                <textarea name="task-desc-chng" class="padding-borR" id="task-desc-chng"
-                    placeholder="Task Description"></textarea>
-
-                <select name="task-priority-chng" id="task-priority-chng" class="padding-borR task-priority">
-                    <option value="Undefined">Undefined</option>
-                    <option value="Low">Low</option>
-                    <option value="Medium">Medium</option>
-                    <option value="High">High</option>
-                </select>
-
-                <button id="change-task-dets">Change</button>
-            </div>
-        </div>
+        </section>
     </main>
 
     <script src="script.js"></script>
